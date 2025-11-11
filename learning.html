@@ -1,0 +1,157 @@
+
+<!-- Learning Section (HTML + CSS in one snippet, simple image, no card styling) -->
+<style>
+  .learning * { box-sizing: border-box; }
+
+  :root {
+    --bg-top: #F9FBFE;
+    --bg-bottom: #534664;
+    --text-dark: #222;
+    --text-light: #fff;
+    --muted: #667085;
+  }
+
+  .learning {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", sans-serif;
+    color: var(--text-dark);
+    line-height: 1.5;
+  }
+
+  /* ---------- TOP ---------- */
+  .learning_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-top);
+    padding: 24px 32px;
+  }
+
+  .sec_one { width: 33.33%; display: flex; align-items: flex-start; }
+  .back-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 6px;
+    margin-top: 8px;
+  }
+  .back-btn img { width: 40px; height: 40px; display: block; }
+
+  .sec_two {
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+  .sec_two h2 { margin: 0; font-size: 22px; font-weight: 700; }
+  .subtitle { margin: 0; font-size: 14px; color: var(--muted); }
+  .platform-icon { width: 100px; height: 100px; object-fit: contain; }
+
+  .sec_three { width: 33.33%; }
+
+  /* ---------- BOTTOM ---------- */
+  .learning_bottom {
+    display: flex;
+    background: var(--bg-bottom);
+    color: var(--text-light);
+    padding: 28px 32px;
+    gap: 24px;
+  }
+
+  .imgsection {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* IMPORTANT: plain image, no card style */
+  .imgsection img {
+    display: block;
+    width: 300px;     /* adjust as you need */
+    height: auto;     /* keeps natural aspect ratio */
+    /* no shadow, no border-radius */
+  }
+
+  .textsection {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .textsection h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 800;
+  }
+  .textsection p {
+    margin: 0;
+    font-size: 15px;
+    color: #F5F3F9;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    .learning_top {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .sec_one, .sec_two, .sec_three { width: 100%; justify-content: center; }
+
+    .learning_bottom {
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+    }
+    .imgsection, .textsection { width: 100%; }
+    .imgsection img {
+      width: 100%;
+      max-width: 480px;  /* grows nicely on mobile */
+      height: auto;
+    }
+  }
+</style>
+
+<div class="learning" aria-labelledby="learning-title">
+  <div class="learning_top">
+    <div class="sec_one">
+      <button class="back-btn" aria-label="Go back" onclick="history.back()">
+        <img src="static/back.png" alt="">
+      </button>
+    </div>
+
+    <div class="sec_two">
+      <h2 id="learning-title">Learning Platform</h2>
+      <p class="subtitle">Education made efficient, organized and accessible</p>
+      <img src="static/learning.png" alt="" style="width: 100px; height: 100px ; ">
+
+    </div>
+
+    <div class="sec_three"></div>
+  </div>
+
+  <div class="learning_bottom">
+    <div class="imgsection">
+      <!-- If the image is still not showing, double-check this path -->
+      <img src="static/unsplash_bZ_RkRKE0Po.png" style="width: 300px; height: 100%;" alt="">
+    </div>
+    <div class="textsection">
+      <h2>AI is redefining how the world learns. H7 EdTech is at the center of that transformation.</h2>
+      <p>
+        H7 is a next-generation learning platform that helps educators, organizations, and learners build a smarter path to knowledge.
+        From designing interactive courses to managing complex training programs, we make education seamless, structured, and engaging.
+      </p>
+      <p>
+        With AI-driven tools, personalized learning journeys, and powerful analytics, H7 empowers institutions to understand progress in real
+        time and helps learners stay motivated and on track. H7 turns every learning experience into an organized, efficient, and accessible
+        journey toward growth.
+      </p>
+    </div>
+  </div>
+</div>

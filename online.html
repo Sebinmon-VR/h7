@@ -1,155 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H7 EdTech - Online Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- Learning Section (HTML + CSS in one snippet, simple image, no card styling) -->
-<style>
-  .learning * { box-sizing: border-box; }
+    <style>
+        /* --- Reset & Variables --- */
+        :root {
+            --primary-purple: #554B68; /* Dark purple background */
+            --accent-purple: #C6BBE3;  /* Light purple for headers */
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-body: #F8F9FD;
+            --border-radius-card: 16px;
+            --shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
 
-  :root {
-    --bg-top: #F9FBFE;
-    --bg-bottom: #534664;
-    --text-dark: #222;
-    --text-light: #fff;
-    --muted: #667085;
-  }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-  .learning {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", sans-serif;
-    color: var(--text-dark);
-    line-height: 1.5;
-  }
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
 
-  /* ---------- TOP ---------- */
-  .learning_top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--bg-top);
-    padding: 24px 32px;
-  }
+        .container {
+            width: 100%;
+            max-width: 1000px;
+        }
 
-  .sec_one { width: 33.33%; display: flex; align-items: flex-start; }
-  .back-btn {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    padding: 6px;
-    margin-top: 8px;
-  }
-  .back-btn img { width: 40px; height: 40px; display: block; }
+        /* --- Top Section --- */
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            gap: 40px;
+        }
 
-  .sec_two {
-    width: 33.33%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 6px;
-  }
-  .sec_two h2 { margin: 0; font-size: 22px; font-weight: 700; }
-  .subtitle { margin: 0; font-size: 14px; color: var(--muted); }
-  .platform-icon { width: 100px; height: 100px; object-fit: contain; }
+        .top-left {
+            flex: 1;
+            padding-top: 10px;
+        }
 
-  .sec_three { width: 33.33%; }
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 24px;
+            border: 1px solid #aaa;
+            border-radius: 30px;
+            text-decoration: none;
+            color: #555;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            background: white;
+            transition: all 0.2s;
+        }
 
-  /* ---------- BOTTOM ---------- */
-  .learning_bottom {
-    display: flex;
-    background: var(--bg-bottom);
-    color: var(--text-light);
-    padding: 28px 32px;
-    gap: 24px;
-  }
+        .btn-back:hover {
+            background: #f0f0f0;
+        }
 
-  .imgsection {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+        .top-headline {
+            font-size: 1.8rem;
+            line-height: 1.4;
+            color: #554B68;
+            font-weight: 700;
+            max-width: 550px;
+        }
 
-  /* IMPORTANT: plain image, no card style */
-  .imgsection img {
-    display: block;
-    width: 300px;     /* adjust as you need */
-    height: auto;     /* keeps natural aspect ratio */
-    /* no shadow, no border-radius */
-  }
+        .platform-card {
+            background: white;
+            border-radius: var(--border-radius-card);
+            box-shadow: var(--shadow);
+            width: 250px;
+            overflow: hidden;
+            text-align: center;
+            flex-shrink: 0;
+        }
 
-  .textsection {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .textsection h2 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 800;
-  }
-  .textsection p {
-    margin: 0;
-    font-size: 15px;
-    color: #F5F3F9;
-  }
+        .platform-header {
+            background-color: var(--accent-purple);
+            color: #554B68;
+            padding: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
 
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 900px) {
-    .learning_top {
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      text-align: center;
-    }
-    .sec_one, .sec_two, .sec_three { width: 100%; justify-content: center; }
+        .platform-body {
+            padding: 25px 15px;
+        }
 
-    .learning_bottom {
-      flex-direction: column;
-      align-items: center;
-      text-align: left;
-    }
-    .imgsection, .textsection { width: 100%; }
-    .imgsection img {
-      width: 100%;
-      max-width: 480px;  /* grows nicely on mobile */
-      height: auto;
-    }
-  }
-</style>
+        .platform-icon {
+            font-size: 3rem;
+            color: #554B68; /* Matching the dark purple outline style */
+            margin-bottom: 10px;
+            display: block;
+        }
 
-<div class="learning" aria-labelledby="learning-title">
-  <div class="learning_top">
-    <div class="sec_one">
-      <button class="back-btn" aria-label="Go back" onclick="history.back()">
-        <img src="static/back.png" alt="">
-      </button>
+        .platform-body p {
+            font-size: 0.8rem;
+            color: #666;
+            line-height: 1.3;
+        }
+
+        /* --- Middle Section (Purple Banner) --- */
+        .purple-banner {
+            background-color: var(--primary-purple);
+            border-radius: 12px;
+            padding: 40px;
+            display: flex;
+            align-items: flex-start; /* Changed to flex-start for better text alignment */
+            gap: 40px;
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            /* Topographic map pattern effect */
+            background-image: repeating-radial-gradient( circle at 0 0, transparent 0, var(--primary-purple) 10px ), repeating-linear-gradient( rgba(255,255,255,0.03), rgba(255,255,255,0.03) );
+        }
+
+        /* Pattern overlay */
+        .purple-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 10 Q 50 50 90 10" stroke="rgba(255,255,255,0.05)" fill="none"/><path d="M10 50 Q 50 90 90 50" stroke="rgba(255,255,255,0.05)" fill="none"/><path d="M-10 20 Q 20 80 50 20" stroke="rgba(255,255,255,0.05)" fill="none"/></svg>');
+            background-size: 150px 150px;
+            pointer-events: none;
+        }
+
+        .banner-image {
+            flex: 0 0 35%;
+            z-index: 1;
+            /* To match the square/landscape aspect ratio */
+            height: 250px; 
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .banner-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .banner-text {
+            flex: 1;
+            z-index: 1;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            opacity: 0.95;
+            text-align: left;
+            font-weight: 300;
+        }
+
+        /* --- Bottom Section (Cards) --- */
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.9fr; /* Left slightly wider */
+            gap: 30px;
+        }
+
+        /* Form Card */
+        .card-white {
+            background: white;
+            padding: 35px 40px;
+            border-radius: var(--border-radius-card);
+            box-shadow: var(--shadow);
+        }
+
+        .form-header {
+            color: #554B68;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .form-header span {
+            color: #554B68; 
+        }
+        
+        .form-header .demo-text {
+            color: #9E94B8; /* Light purple for DEMO word */
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .booking-form input,
+        .booking-form select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #f0f0f0;
+            background: #Fcfcfd;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #555;
+            outline: none;
+        }
+
+        .booking-form input::placeholder {
+            color: #aaa;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row > * {
+            flex: 1;
+        }
+
+        .btn-submit {
+            background-color: #5D5677; /* Slightly lighter than bg */
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .btn-submit:hover {
+            background-color: #4a4463;
+        }
+
+        /* Logo Card */
+        .logo-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo-icon-container {
+            font-size: 4rem;
+            color: #554B68; /* Outline color */
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .brand-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 2px;
+        }
+
+        .brand-tagline {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #666;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .top-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .platform-card {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .purple-banner {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .banner-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .bottom-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="top-section">
+            <div class="top-left">
+                <a href="#" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+                <h1 class="top-headline">
+                    H7 is transforming the quality and reach of online education across the globe.
+                </h1>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">Online Education</div>
+                <div class="platform-body">
+                    <img src="static/online-education-5418 1.png" alt="" style="width: 150px; height: 100px;">
+                    <p>Flexibility and worldwide access</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="purple-banner">
+            <div class="banner-image">
+                <img src="static/unsplash_bZ_RkRKE0Po (1).png" alt="Online Learning">
+            </div>
+            <div class="banner-text">
+                <p>We bring together learners and educators through live video sessions, digital assignments, and interactive tools that make learning immersive and effective. With a platform designed for flexibility and personalization, H7 adapts to each learner's pace, goals, and interests — turning online education into a truly dynamic experience.</p>
+                <br>
+                <p>From virtual classrooms to self-paced modules, H7 connects students with quality education anytime, anywhere. Our mission is simple: to make knowledge accessible, engaging, and empowering for learners worldwide.</p>
+            </div>
+        </div>
+
+        <div class="bottom-grid">
+            
+            <div class="card-white">
+                <div class="form-header">
+                    <i class="fas fa-info-circle"></i>
+                    <span>BOOK A <span class="demo-text">DEMO</span></span>
+                </div>
+                <form class="booking-form">
+                    <input type="text" placeholder="Student Name">
+                    <input type="text" placeholder="Parent Name">
+                    
+                    <div class="form-row">
+                        <select>
+                            <option value="" disabled selected>Grade</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                        <select>
+                            <option value="" disabled selected>Syllabus</option>
+                            <option value="cbse">CBSE</option>
+                            <option value="icse">ICSE</option>
+                        </select>
+                    </div>
+
+                    <input type="text" placeholder="Subjects">
+                    
+                    <div class="form-row">
+                        <input type="text" placeholder="Current Location">
+                        <input type="text" placeholder="Mobile Number">
+                    </div>
+
+                    <button type="submit" class="btn-submit">Send</button>
+                </form>
+            </div>
+
+            <div class="card-white logo-card">
+                <div class="logo-icon-container">
+                    <img src="static/Frame 130.png" alt="H7 Logo" style="width: 200px;height: 200px;">
+                </div>
+
+                <div class="brand-name">H7 EdTech</div>
+                <div class="brand-tagline">SHAPE THE FUTURE</div>
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="sec_two">
-      <h2 id="learning-title">Online Education</h2>
-      <p class="subtitle">Flexibility and
-worldwide access</p>
-      <img src="static/learning.png" alt="" style="width: 100px; height: 100px ; ">
-
-    </div>
-
-    <div class="sec_three"></div>
-  </div>
-
-  <div class="learning_bottom">
-    <div class="imgsection">
-      <!-- If the image is still not showing, double-check this path -->
-      <img src="static/unsplash_bZ_RkRKE0Po (1).png" style="width: 300px; height: 100%;" alt="">
-    </div>
-    <div class="textsection">
-      <h2>H7 is transforming the quality and reach of online education across the globe.</h2>
-      <p>
-       We bring together learners and educators through live video sessions, digital assignments, and interactive tools that make learning immersive and effective. With a platform designed for flexibility and personalization, H7 adapts to each learner’s pace, goals, and interests — turning online education into a truly dynamic experience.
-      </p>
-      <p>
-From virtual classrooms to self-paced modules, H7 connects students with quality education anytime, anywhere. Our mission is simple: to make knowledge accessible, engaging, and empowering for learners worldwide.
-      </p>
-    </div>
-  </div>
-</div>
+</body>
+</html>

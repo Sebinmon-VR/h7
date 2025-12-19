@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H7 EdTech - Hybrid Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Reset & Variables --- */
+        :root {
+            --primary-purple: #554B68;
+            --dark-box-bg: #2E2836; /* Darker background for the feature boxes */
+            --teal-border: #A0E0E0; /* Border for contact form */
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-body: #FDFDFD;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header Section --- */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            /* Mimicking the logo gradient */
+            background: linear-gradient(135deg, #00C6FF, #FF72E3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            display: inline-block;
+            font-style: italic;
+        }
+
+        .main-headline {
+            font-size: 1.1rem;
+            color: #554B68;
+            font-weight: 600;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* --- Hero Section (Purple Grid) --- */
+        .hero-section {
+            background-color: var(--primary-purple);
+            padding: 60px 0;
+            position: relative;
+            /* Topographic pattern simulation */
+            background-image: repeating-radial-gradient( circle at 50% 50%, transparent 0, var(--primary-purple) 15px ), repeating-linear-gradient( rgba(255,255,255,0.03), rgba(255,255,255,0.03) );
+        }
+
+        /* Pattern overlay SVG */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M-10 20 Q 20 80 50 20" stroke="rgba(255,255,255,0.05)" fill="none"/><path d="M50 80 Q 80 20 110 80" stroke="rgba(255,255,255,0.05)" fill="none"/></svg>');
+            background-size: 100px 100px;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1fr;
+            gap: 30px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Feature Boxes */
+        .feature-box {
+            background-color: var(--dark-box-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            color: white;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .feature-box:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Center Image */
+        .center-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .center-image {
+            width: 100%;
+            height: 380px; /* Taller portrait orientation */
+            object-fit: cover;
+            border-radius: 20px;
+            border: 4px solid rgba(255,255,255,0.8);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* --- Ecosystem Text Section --- */
+        .ecosystem-section {
+            padding: 60px 20px;
+            background-color: #FAFAFC;
+        }
+
+        .text-card {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            text-align: left;
+        }
+
+        .ecosystem-section h2 {
+            text-align: center;
+            color: #554B68;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .ecosystem-section p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .why-choose {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .why-choose li {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 8px;
+            list-style-type: none;
+            position: relative;
+        }
+        
+        .why-choose li::before {
+            content: "•";
+            color: #554B68;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* --- Contact Section --- */
+        .contact-section {
+            padding: 60px 0 100px;
+            background-color: #fff;
+            /* Dotted pattern background */
+            background-image: radial-gradient(#E0E0E0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .contact-form-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid var(--teal-border);
+            border-radius: 16px;
+            padding: 40px 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .contact-form-card h3 {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: #444;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #FAFAFC;
+            border: 1px solid #EEE;
+            border-radius: 6px;
+            outline: none;
+            color: #555;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            background-color: white;
+            border-color: #ccc;
+        }
+
+        .btn-send {
+            width: 100%;
+            background-color: #554B68;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-send:hover {
+            background-color: #3E364F;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .center-image-container {
+                order: -1; /* Move image to top on mobile */
+                margin-bottom: 30px;
+            }
+            
+            .center-image {
+                height: 250px;
+                max-width: 400px;
+            }
+
+            .feature-box {
+                text-align: center;
+            }
+            
+            .contact-form-card {
+                margin: 0 20px;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo"><img src="static/logo.png" alt="H7 Logo"></div>
+            <h1 class="main-headline">
+                H7 is a hybrid platform. We combine online and technology-based methods to enhance the learning process
+            </h1>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container hero-grid">
+            
+            <div class="col-left">
+                <div class="feature-box">
+                    We have a global reach, providing support for students both in India and other countries.
+                </div>
+                <div class="feature-box">
+                    Designed for students from KG to Grade 12, offering both academic and skill-based education.
+                </div>
+            </div>
+
+            <div class="center-image-container">
+                <img src="static/pexels-photo-8618023 1.png" alt="Student Learning" class="center-image">
+            </div>
+
+            <div class="col-right">
+                <div class="feature-box">
+                    Interactive learning. Focus on creating a fun, interactive and engaging learning environment.
+                </div>
+                <div class="feature-box">
+                    Core subjects such as English, Math, Science and creative skills like music, craft, and abacus.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="ecosystem-section">
+        <div class="container">
+            <div class="text-card">
+                <h2>H7 is a complete academic ecosystem</h2>
+                <p>
+                    Your journey starts with H7. Join thousands of learners who've discovered smarter, simpler and more meaningful ways to learn.<br>
+                    Whether you're aiming for better grades, deeper understanding, or lifelong learning habits, H7 makes it possible.
+                </p>
+                
+                <p style="margin-bottom:5px;">Why Choose H7?</p>
+                <ul class="why-choose">
+                    <li>Personalized mentorship with expert educators.</li>
+                    <li>Technology that adapts to you — not the other way around.</li>
+                    <li>Engaging classes that make learning exciting.</li>
+                </ul>
+
+                <p>
+                    Education is evolving — and H7 is leading the way. Start your personalized learning journey today and see how powerful education becomes when it's built around you.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-form-card">
+                <h3>Contact Us</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="6"></textarea>
+                    </div>
+                    <button type="submit" class="btn-send">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html

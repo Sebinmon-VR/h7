@@ -329,18 +329,43 @@
             line-height: 1.4;
         }
 
+        .cards-carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            padding-bottom: 20px; /* Space for scrollbar */
+            scroll-snap-type: x mandatory; /* Smooth snapping to cards */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            justify-content: center; /* Center cards if there's space */
+        }
+
+        .cards-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .cards-carousel::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .cards-carousel::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
         .learning-card {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255,255,255,0.15);
             border-radius: 15px;
             padding: 25px;
             display: flex;
+            flex-direction: column; /* Stack image and content vertically */
             align-items: center;
-            text-align: left;
-            max-width: 650px;
-            gap: 25px;
+            text-align: center;
+            min-width: 300px; /* Ensure cards don't shrink too much */
+            max-width: 350px;
+            gap: 15px; /* Adjust gap for vertical stacking */
             backdrop-filter: blur(5px);
-            margin: 0 auto;
+            scroll-snap-align: start; /* Snap points for scrolling */
         }
 
         .learning-card img {
@@ -641,12 +666,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .learning-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
-            }
-            
             .learning-card img {
                 width: 100%;
                 height: 150px;
@@ -664,13 +683,16 @@
 
     <header>
         <div class="logo">
-            <span class="logo-icon">H7</span>
+            <img src="static/logo.png" alt="">
         </div>
         <nav>
             <ul>
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="learning.html">Learning</a></li>
+                <li><a href="online.html">Online</a></li>
+                <li><a href="tution.html">Tution</a></li>
+                <li><a href="about.html">About</a></li>
             </ul>
         </nav>
         <div class="contact-link">
@@ -721,14 +743,36 @@
                 <h2>Global Reach</h2>
                 <p>Supporting students both in India and other countries</p>
 
-                <div class="learning-card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Graduates">
+                <div class="cards-carousel">
+                    <div class="learning-card">
+                        <div class="card-image">
+                            <img src="static/unsplash_LLfRMRT-9AY (1).png" alt="Graduates">
+                        </div>
+                        <div class="card-content">
+                            <h4>Learning Platform</h4>
+                            <p>AI is shaping how the world works. H7 EdTech supports students, managers and tracks educational courses and training programs to make education more organized, efficient and accessible.</p>
+                            <a href="learning.html" class="btn-small">Read More</a>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <h4>Learning Platform</h4>
-                        <p>AI is shaping how the world works. H7 EdTech supports students, managers and tracks educational courses and training programs to make education more organized, efficient and accessible.</p>
-                        <a href="#" class="btn-small">Read More</a>
+                    <div class="learning-card">
+                        <div class="card-image">
+                            <img src="static/unsplash_bZ_RkRKE0Po (1).png" alt="Online Courses">
+                        </div>
+                        <div class="card-content">
+                            <h4>Online Courses</h4>
+                            <p>Access a wide range of courses from anywhere, anytime. Our flexible online learning options cater to your schedule and needs.</p>
+                            <a href="online.html" class="btn-small">Read More</a>
+                        </div>
+                    </div>
+                    <div class="learning-card">
+                        <div class="card-image">
+                            <img src="static/unsplash_bZ_RkRKE0Po (2).png" alt="Tuition">
+                        </div>
+                        <div class="card-content">
+                            <h4>Personalized Tuition</h4>
+                            <p>Get one-on-one attention and customized learning plans with our expert tutors to achieve your academic goals.</p>
+                            <a href="tution.html" class="btn-small">Read More</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -738,7 +782,7 @@
             <div class="container features-grid-wrapper">
                 
                 <div class="side-image left">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="circle-img" alt="Student">
+                    <img src="static\unsplash_Y45PpacE8UA.png" class="circle-img" alt="Student">
                 </div>
 
                 <div class="features-grid">
@@ -765,7 +809,7 @@
                 </div>
 
                 <div class="side-image right">
-                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="circle-img" alt="Tutor">
+                    <img src="styles\ChatGPT Image Sep 9, 2025, 01_30_00 PM 1.png" class="circle-img" alt="Tutor">
                 </div>
             </div>
         </section>
@@ -820,11 +864,11 @@
         <div class="container footer-content">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <i class="fas fa-graduation-cap"></i> H7 EdTech
+                    <img src="static/logo.png" alt="">H7 EdTech
                 </div>
-                <p>education@h7.tech | +91 8593 903 | Trivandrum</p>
+                <p>academics@h7ed.com | Ph: 9207773300 | @h7_education_</p>
                 <div class="sub-logo">
-                    <i class="fas fa-cube sub-logo-icon"></i> Ramdas Technologies
+                    <img src="static/IMG-20250828-WA0000 2.png" alt=""> Hamdas Technologies
                 </div>
             </div>
             <div class="footer-right">

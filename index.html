@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H7 EdTech - Shape the Future</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- CSS Reset & Variables --- */
         :root {
-            --primary-dark: #3E3B5C; /* Dark purple from global reach */
-            --primary-light: #F8F9FE;
-            --accent-green: #00E676; /* Bright button green */
-            --accent-pink: #FF80AB; /* Icon colors */
+            /* Dark Purple for Global Section & Footer */
+            --primary-dark-purple: #322E4F; 
+            /* Light Purple for Hero & Features */
+            --primary-light-purple: #F5F2FB; 
+            /* Teal/Cyan for Accents */
+            --accent-teal: #4EE2C3;
+            /* Text Colors */
             --text-dark: #333;
-            --text-light: #fff;
-            --border-color: #E0E0E0;
-            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            --bg-purple-section: #4c4660; 
+            --text-purple: #7A6C97;
+            --text-white: #fff;
         }
 
         * {
@@ -29,653 +30,365 @@
         }
 
         body {
-            background-color: #fcfcfc;
-            color: var(--text-dark);
-            line-height: 1.6;
+            background-color: var(--bg-light);
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* --- Buttons --- */
-        .btn-green {
-            background-color: var(--accent-green);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            box-shadow: 0 4px 10px rgba(0,230,118,0.4);
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-dark {
-            background-color: #5D5677;
-            color: white;
-            padding: 12px;
-            width: 100%;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-
-        .btn-dark:hover {
-            background-color: #4a4463;
-        }
-
-        .btn-small {
-            background: rgba(255,255,255,0.2);
-            padding: 8px 20px;
-            border-radius: 20px;
-            color: white;
-            text-decoration: none;
-            font-size: 0.8rem;
-            display: inline-block;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-
-        .btn-small:hover {
-            background: rgba(255,255,255,0.3);
-        }
+        a { text-decoration: none; }
+        ul { list-style: none; }
 
         /* --- Header --- */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 40px;
-            background: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px 40px;
+            background: var(--primary-light-purple); /* Light purple background */
         }
 
-        .logo {
+        .logo img { height: 50px; } /* Adjusted logo size */
+
+        .nav-pill {
+            background: var(--primary-dark-purple); /* Dark purple pill */
+            padding: 10px 30px;
+            border-radius: 30px;
             display: flex;
-            align-items: center;
-        }
-
-        .logo-icon {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #4facfe; /* Logo gradient start approximation */
-            background: -webkit-linear-gradient(#4facfe, #00f2fe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            background: #EAEAEA;
-            border-radius: 25px;
-            padding: 4px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #777;
-            padding: 6px 25px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            display: block;
-            transition: all 0.3s;
-        }
-
-        nav ul li a.active {
-            background-color: var(--primary-dark);
-            color: white;
-        }
-
-        .contact-link a {
-            text-decoration: none;
-            color: #888;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* --- Hero Section --- */
-        .hero-section {
-            padding: 60px 0;
-            background: radial-gradient(circle at top left, #f5f7fa, #fff);
-        }
-
-        .hero-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Banner Card */
-        .hero-banner {
-            background: white;
-            border-radius: 20px;
-            box-shadow: var(--card-shadow);
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            margin-bottom: 30px;
-            overflow: hidden;
-        }
-
-        .hero-image {
-            flex: 0 0 45%;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            border-radius: 15px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .hero-text {
-            flex: 1;
-            padding: 30px;
-        }
-
-        .hero-text .sub-title {
-            color: #A68ADD;
-            font-weight: 600;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-        }
-
-        .hero-text h1 {
-            font-size: 2.2rem;
-            line-height: 1.1;
-            color: #A0E0E0;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-
-        .hero-text .gradient-text {
-            background: linear-gradient(to right, #6dd5ed, #b19cd9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-            display: block;
-        }
-
-        /* Booking Form */
-        .booking-form-container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: var(--card-shadow);
-            padding: 30px 40px;
-        }
-
-        .booking-form-container h3 {
-            color: #888;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .booking-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .booking-form input, 
-        .booking-form select {
-            width: 100%;
-            padding: 12px 15px;
-            background: #F8F9FB;
-            border: 1px solid #f0f0f0;
-            border-radius: 6px;
-            color: #555;
-            font-size: 0.9rem;
-            outline: none;
-        }
-
-        .booking-form input:focus, 
-        .booking-form select:focus {
-            border-color: #ccc;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 15px;
-        }
-
-        .form-row input, .form-row select {
-            flex: 1;
-        }
-
-        /* --- Global Reach Section --- */
-        .global-reach {
-            background-color: var(--primary-dark);
-            color: white;
-            padding: 80px 0 100px;
-            position: relative;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        /* Faking the map background */
-        .global-reach::before {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%; height: 80%;
-            /* Using a generic SVG path for a map effect */
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M20,10 Q40,5 60,10 T100,20 L100,50 L0,50 L0,20 Z" /></svg>'); 
-            background-size: cover;
-            opacity: 0.5;
-            pointer-events: none;
-        }
-
-        .center-text {
-            position: relative; 
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .globe-icon {
-            font-size: 4rem; /* Big icon */
-            margin-bottom: 15px;
-            color: rgba(0, 0, 0, 0.3); /* Silhouette effect */
-            background: radial-gradient(circle, #2b2842 40%, transparent 50%);
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Using actual FontAwesome in HTML, styling specifically */
-        .globe-img-placeholder {
-            font-size: 8rem;
-            color: #2b2740;
-            margin-bottom: -40px;
-            z-index: -1;
-        }
-
-        .global-reach h2 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .global-reach > .container > p {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-bottom: 40px;
-            max-width: 300px;
-            line-height: 1.4;
-        }
-
-        .cards-carousel {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto; /* Enable horizontal scrolling */
-            padding-bottom: 20px; /* Space for scrollbar */
-            scroll-snap-type: x mandatory; /* Smooth snapping to cards */
-            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-            justify-content: center; /* Center cards if there's space */
-        }
-
-        .cards-carousel::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .cards-carousel::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-        }
-
-        .cards-carousel::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .learning-card {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 15px;
-            padding: 25px;
-            display: flex;
-            flex-direction: column; /* Stack image and content vertically */
-            align-items: center;
-            text-align: center;
-            min-width: 300px; /* Ensure cards don't shrink too much */
-            max-width: 350px;
-            gap: 15px; /* Adjust gap for vertical stacking */
-            backdrop-filter: blur(5px);
-            scroll-snap-align: start; /* Snap points for scrolling */
-        }
-
-        .learning-card img {
-            border-radius: 8px;
-            width: 160px;
-            height: 100px;
-            object-fit: cover;
-        }
-
-        .card-content h4 {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .card-content p {
-            font-size: 0.8rem;
-            margin-bottom: 15px;
-            line-height: 1.5;
-            opacity: 0.9;
-        }
-
-        /* --- Features Section --- */
-        .features {
-            padding: 60px 0;
-            background: white;
-        }
-
-        .features-grid-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 30px;
         }
 
-        .side-image .circle-img {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border: 4px solid #f0f0f0;
-            padding: 2px;
-            background: white;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            max-width: 700px;
-        }
-
-        .feature-card {
-            background: white;
-            border: 1px solid #f1f1f1;
-            border-radius: 12px;
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-            border-color: var(--accent-pink);
-        }
-
-        .feature-card .icon {
-            font-size: 1.8rem;
-            color: var(--accent-pink);
-            margin-bottom: 15px;
-        }
-
-        .feature-card h4 {
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-            color: #444;
-            font-weight: 600;
-        }
-
-        .feature-card p {
-            font-size: 0.75rem;
-            color: #888;
-            line-height: 1.5;
-        }
-
-        /* --- FAQ Section --- */
-        .faq-section {
-            background-color: var(--bg-purple-section);
-            padding: 60px 0;
-            color: white;
-            text-align: center;
-        }
-
-        .faq-section h2 {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .faq-item {
-            background: white;
-            color: #555;
-            padding: 15px 25px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
+        .nav-pill a {
+            color: var(--text-white); /* White text */
             font-size: 0.9rem;
-            text-align: left;
             font-weight: 500;
-            transition: background 0.2s;
         }
         
-        .faq-item:hover {
-            background: #f9f9f9;
-        }
+        .nav-pill a.active { font-weight: 700; }
+        .contact-us-link { color: var(--text-purple); font-size: 0.9rem; font-weight: 600;}
 
-        .faq-item i {
-            font-size: 0.8rem;
-            color: #999;
-        }
-
-        /* --- Contact Section --- */
-        .contact-section {
-            padding: 80px 0;
-            /* Creating the dotted pattern background effect */
-            background-image: radial-gradient(#e0e0e0 1.5px, transparent 1.5px);
-            background-size: 30px 30px;
-            background-color: #fff;
-        }
-
-        .contact-card {
-            background: white;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 40px 50px;
-            border-radius: 12px;
-            border: 1px solid #c2f0eb; /* teal border hint */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        /* --- Hero Section --- */
+        .hero-section {
+            background: var(--primary-light-purple);
+            padding: 60px 0 200px 0; 
             position: relative;
         }
 
-        /* Adding the double border effect using pseudo-element */
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: -5px; bottom: -5px; left: -5px; right: -5px;
-            border: 1px solid #e0e0e0;
-            border-radius: 16px;
-            z-index: -1;
-        }
-
-        .contact-card h3 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #444;
-            font-size: 1.2rem;
-        }
-
-        .contact-card form {
+        .hero-content {
             display: flex;
-            flex-direction: column;
-        }
-
-        .contact-card label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: #555;
-        }
-
-        .contact-card input, 
-        .contact-card textarea {
-            margin-bottom: 20px;
-            padding: 12px;
-            background: #Fcfcfd;
-            border: 1px solid #eee;
-            border-radius: 4px;
-            outline: none;
-            width: 100%;
-            font-family: inherit;
-        }
-
-        .contact-card input:focus, 
-        .contact-card textarea:focus {
-            background: white;
-            border-color: #ccc;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: #262433;
-            color: #ccc;
-            padding: 40px 0;
-            font-size: 0.8rem;
-        }
-
-        .footer-content {
-            display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
+            min-height: 400px;
+            position: relative;
+            z-index: 5; 
         }
 
-        .footer-logo {
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: white; 
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .footer-logo i {
-            color: #00E676; /* Accent color for icon */
-        }
+        .hero-text { flex: 1; padding-right: 50px; }
 
-        .sub-logo {
-            margin-top: 10px;
-            color: #888;
-            font-size: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .sub-logo-icon {
-            color: #FF80AB;
+        .hero-subtitle {
+            color: var(--text-purple);
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
             font-size: 1rem;
         }
 
-        .footer-right {
+        .hero-title {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            color: var(--accent-teal); /* Teal color */
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero-desc {
+            color: var(--text-purple); /* Purple text */
+            margin-bottom: 30px;
+            max-width: 450px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons { display: flex; gap: 20px; }
+
+        /* Teal Button */
+        .btn-teal {
+            background-color: var(--accent-teal);
+            color: var(--primary-dark-purple);
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(78, 226, 195, 0.4);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border: none;
+        }
+
+        /* White Outline Button */
+        .btn-outline-white {
+            background: transparent;
+            color: var(--text-purple);
+            border: 2px solid var(--text-purple);
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
             display: flex;
-            gap: 20px;
+            justify-content: center;
+        }
+        
+        /* Teal circle behind the girl */
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: var(--accent-teal); /* Teal background */
+            border-radius: 50%;
+            z-index: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.2; /* Semi-transparent */
         }
 
-        .footer-right a {
-            color: white;
-            font-size: 1.3rem;
-            transition: color 0.3s;
+        .hero-image img {
+            position: relative;
+            z-index: 1;
+            width: 400px;
+            /* Removed border-radius to match image */
         }
 
-        .footer-right a:hover {
-            color: var(--accent-green);
+        /* --- SVG Curve --- */
+        .svg-curve-divider {
+            position: absolute;
+            bottom: -5px; /* Overlap slightly */
+            left: 0;
+            width: 100%;
+            line-height: 0;
+            z-index: 2;
         }
 
-        /* --- Responsive Adjustments --- */
+        .svg-curve-divider svg {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .curve-text {
+            font-size: 16px;
+            font-weight: 800;
+            fill: var(--text-white); /* White text */
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- Global Reach Section --- */
+        .global-section {
+            background-color: var(--primary-dark-purple);
+            padding: 50px 0 100px; 
+            position: relative;
+            color: var(--text-white);
+            text-align: center;
+            margin-top: -1px; 
+        }
+
+        /* --- Map & Bubbles --- */
+        .world-map-container {
+            position: relative;
+            height: 600px;
+            max-width: 900px;
+            margin: 50px auto 100px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .map-silhouette {
+            width: 60%;
+            opacity: 0.2;
+            /* White map */
+            filter: invert(1) sepia(1) saturate(0) lighten(1); 
+        }
+
+        .center-titles {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .center-titles h2 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; }
+        .center-titles p { font-size: 1rem; opacity: 0.9; max-width: 300px; margin: 0 auto; }
+
+        /* Orbit Bubbles */
+        .orbit-bubble {
+            position: absolute;
+            background: #423D63; /* Slightly lighter purple for bubbles */
+            color: var(--text-white);
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 0.85rem;
+            padding: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255,255,255,0.1);
+            font-weight: 600;
+        }
+
+        /* Positioning based on the image's layout */
+        .bubble-1 { top: 5%; left: 20%; }
+        .bubble-2 { top: 5%; right: 20%; }
+        .bubble-3 { top: 35%; left: 5%; }
+        .bubble-4 { top: 35%; right: 5%; }
+        .bubble-5 { bottom: 20%; left: 20%; }
+        .bubble-6 { bottom: 20%; right: 20%; }
+        
+        .bubble-curriculum { 
+            top: 20%; left: 50%; 
+            transform: translate(-50%, -120%); 
+            width: 140px; height: 140px; 
+            background: #514A75; z-index:1; 
+        }
+
+        /* --- Dark Cards Section (Integrated into Global Section) --- */
+        .dark-cards-section {
+            padding-bottom: 80px;
+        }
+        .dark-cards-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .dark-card {
+            background: #423D63; /* Lighter purple for cards */
+            border-radius: 20px;
+            width: 320px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: none;
+        }
+
+        .dark-card img { width: 100%; height: 180px; object-fit: cover; }
+        .dark-card-body { padding: 25px; }
+        .dark-card h4 { color: var(--text-white); margin-bottom: 15px; font-size: 1.2rem; }
+        .dark-card p { color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; }
+
+        .btn-read-more {
+            background: rgba(255,255,255,0.2);
+            color: var(--text-white);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* --- Features Section --- */
+        .features-section {
+            background: var(--primary-light-purple); /* Light purple background */
+            padding: 100px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feature-container { display: flex; align-items: center; gap: 50px; }
+        .circle-side-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 8px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 700px; }
+        
+        .feature-box {
+            border: none;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-box:hover { transform: translateY(-10px); }
+        .feature-icon { color: var(--accent-pink); font-size: 2rem; margin-bottom: 20px; }
+        .feature-box h4 { font-size: 1.1rem; margin-bottom: 15px; color: var(--text-purple); font-weight: 700; }
+        .feature-box p { font-size: 0.9rem; color: #999; line-height: 1.6; }
+
+        /* --- FAQ --- */
+        .faq-section { background: var(--primary-dark-purple); padding: 60px 0; text-align: center; }
+        .faq-section h2 { color: var(--text-white); font-size: 1.5rem; margin-bottom: 40px; letter-spacing: 2px; font-weight: 700; }
+        .faq-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        .faq-row { background: white; padding: 15px 25px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 1rem; color: var(--text-purple); cursor: pointer; font-weight: 500; }
+
+        /* --- Booking Form --- */
+        .booking-section {
+            padding: 100px 0;
+            background-color: white;
+            /* Removed dotted background for cleaner look */
+        }
+
+        .booking-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+
+        .booking-header { display: flex; align-items: center; gap: 15px; margin-bottom: 40px; color: var(--text-purple); font-weight: 800; text-transform: uppercase; font-size: 1.5rem; }
+        .form-grid { display: grid; gap: 20px; }
+        .form-input { width: 100%; padding: 15px 20px; border: 1px solid #eee; background: #F9F9F9; border-radius: 10px; font-size: 1rem; color: #555; outline: none; transition: border-color 0.3s; }
+        .form-input:focus { border-color: var(--text-purple); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .btn-submit { background: var(--primary-dark-purple); color: white; padding: 15px; border: none; border-radius: 10px; cursor: pointer; font-weight: 700; margin-top: 20px; width: 100%; font-size: 1.1rem; }
+
+        /* --- Footer --- */
+        footer { background: var(--primary-dark-purple); color: rgba(255,255,255,0.7); padding: 60px 0; font-size: 0.9rem; }
+        .footer-flex { display: flex; justify-content: space-between; align-items: center; }
+        .footer-logo img { height: 40px; margin-bottom: 15px; }
+        .footer-icons a { color: var(--text-white); margin-left: 20px; font-size: 1.5rem; transition: color 0.3s; }
+        .footer-icons a:hover { color: var(--accent-teal); }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            header {
-                padding: 15px 20px;
-            }
-            
-            nav {
-                display: none; /* Hide nav for simple mobile view */
-            }
-
-            .hero-banner {
-                flex-direction: column;
-                text-align: center;
-                padding-bottom: 20px;
-            }
-            
-            .hero-image {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .hero-text {
-                padding: 10px 20px;
-            }
-
-            .form-row {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .features-grid-wrapper {
-                flex-direction: column;
-            }
-            
-            .side-image {
-                display: none; /* Hide side circles on mobile */
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .learning-card img {
-                width: 100%;
-                height: 150px;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
+            header { padding: 15px; flex-direction: column; gap: 20px; }
+            .nav-pill { display: none; }
+            .hero-section { padding-bottom: 150px; } 
+            .hero-content { flex-direction: column; text-align: center; }
+            .hero-text { padding-right: 0; margin-bottom: 50px; }
+            .hero-title { font-size: 3rem; }
+            .hero-buttons { justify-content: center; }
+            .hero-image::before { width: 300px; height: 300px; }
+            .hero-image img { width: 280px; }
+            .curve-text { font-size: 24px; letter-spacing: 1px; }
+            .world-map-container { height: auto; flex-direction: column; margin-top: 50px; gap: 20px;}
+            .orbit-bubble { position: relative; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important; transform: none !important; margin: 0 auto; }
+            .map-silhouette { display: none; }
+            .center-titles { position: relative; top: auto; left: auto; transform: none; margin-bottom: 40px; }
+            .feature-container { flex-direction: column; gap: 30px; }
+            .circle-side-img { display: none; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-flex { flex-direction: column; gap: 30px; text-align: center; }
+            .footer-icons a { margin: 0 10px; }
         }
     </style>
 </head>
@@ -683,195 +396,173 @@
 
     <header>
         <div class="logo">
-            <img src="static/logo.png" alt="">
+            <img src="https://via.placeholder.com/50x50?text=H7" alt="H7 Logo"> 
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="courses.html">Courses</a></li>
-                <li><a href="learning.html">Learning</a></li>
-                <li><a href="online.html">Online</a></li>
-                <li><a href="tution.html">Tution</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
-        <div class="contact-link">
-            <a href="#contact">Contact Us</a>
+        <div class="nav-pill">
+            <a href="#" class="active">Home</a>
+            <a href="#">Courses</a>
+            <a href="#">About</a>
+        </div>
+        <div class="contact-us-link">
+            <a href="#">Contact Us</a>
         </div>
     </header>
 
     <main>
-
         <section class="hero-section">
-            <div class="container hero-container">
-                
-                <div class="hero-banner">
-                    <div class="hero-image">
-                        <img src="static/pexels-photo-3874375 1.png" alt="Student Learning">
-                    </div>
-                    <div class="hero-text">
-                        <p class="sub-title">Learn with H7 EdTech</p>
-                        <h1>SHAPE THE <br> <span class="gradient-text">FUTURE</span></h1>
-                        <button class="btn-green">START YOUR FREE TRIAL</button>
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <p class="hero-subtitle">Learn with H7 EdTech</p>
+                    <h1 class="hero-title">SHAPE THE <br> <span>FUTURE</span></h1>
+                    <p class="hero-desc">Your journey starts with H7. We offer limitless education for worldwide students. Join thousands of learners who've discovered smarter ways to learn.</p>
+                    <div class="hero-buttons">
+                        <button class="btn-teal">Chat On Whatsapp</button>
+                        <button class="btn-outline-white">Book A Demo</button>
                     </div>
                 </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Student with Folder">
+                </div>
+            </div>
 
-                <div class="booking-form-container">
-                    <h3><i class="fas fa-info-circle"></i> BOOK A DEMO</h3>
-                    <form class="booking-form">
-                        <div class="form-group"><input type="text" placeholder="Student Name"></div>
-                        <div class="form-group"><input type="text" placeholder="Parent Name"></div>
-                        <div class="form-row">
-                            <select><option>Grade</option><option>5</option><option>6</option></select>
-                            <select><option>Syllabus</option><option>CBSE</option><option>ICSE</option></select>
+            <div class="svg-curve-divider">
+                <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <defs>
+                        <path id="curveArch" d="M0,320 Q720,100 1440,320" />
+                    </defs>
+                    <path d="M0,320 Q720,100 1440,320 V400 H0 Z" fill="#322E4F"></path>
+                    <text class="curve-text">
+                        <textPath href="#curveArch" startOffset="50%" text-anchor="middle" dy="-20">
+                            SCHOOL SUBJECTS &nbsp;&nbsp; LANGUAGES &nbsp;&nbsp; CODING & AI &nbsp;&nbsp; ART & CRAFT &nbsp;&nbsp; ABACUS &nbsp;&nbsp; VEDIC MATHS &nbsp;&nbsp; PUBLIC SPEAKING &nbsp;&nbsp; APTITUDE TRAINING
+                        </textPath>
+                    </text>
+                </svg>
+            </div>
+        </section>
+
+        <section class="global-section">
+            <div class="container">
+                <div class="world-map-container">
+                    <div class="center-titles">
+                        <h2>Global Reach</h2>
+                        <p>Supporting students both in India and other countries</p>
+                    </div>
+                    
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" class="map-silhouette" alt="World Map">
+
+                    <div class="orbit-bubble bubble-1">Live Classes<br>1:1 & Group</div>
+                    <div class="orbit-bubble bubble-curriculum">Curriculum<br>CBSE/ICSE/IGCSE<br>/ Victorian etc</div>
+                    <div class="orbit-bubble bubble-2">E-Books For<br>Online Education</div>
+                    <div class="orbit-bubble bubble-3">Co-Curricular<br>Activities</div>
+                    <div class="orbit-bubble bubble-4">24X7 Student<br>Support System</div>
+                    <div class="orbit-bubble bubble-5">Learning<br>Flexibility</div>
+                    <div class="orbit-bubble bubble-6">Progress<br>Tracking</div>
+                </div>
+
+                <div class="dark-cards-section">
+                    <div class="dark-cards-row">
+                        <div class="dark-card">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Learning Platform">
+                            <div class="dark-card-body">
+                                <h4>Learning Platform</h4>
+                                <p>AI is shaping how the world works. H7 EdTech supports students and tracks educational progress efficiently.</p>
+                                <a href="#" class="btn-read-more">Read More</a>
+                            </div>
                         </div>
-                        <div class="form-group"><input type="text" placeholder="Subjects"></div>
-                        <div class="form-row">
-                            <select><option>Country Code</option><option>+91</option></select>
-                            <input type="text" placeholder="Mobile Number">
+                        <div class="dark-card">
+                             <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Online Education">
+                            <div class="dark-card-body">
+                                <h4>Online Education</h4>
+                                <p>Integrated quality network of online education workbook through efficient lessons and interactive tools.</p>
+                                <a href="#" class="btn-read-more">Read More</a>
+                            </div>
                         </div>
-                        <button type="submit" class="btn-dark">Send</button>
-                    </form>
+                        <div class="dark-card">
+                             <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Personal Tuitions">
+                            <div class="dark-card-body">
+                                <h4>Personal Tuitions</h4>
+                                <p>Whether personalized in mastering new skills or support, connecting people through effective platforms.</p>
+                                <a href="#" class="btn-read-more">Read More</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="global-reach">
-            <div class="container center-text">
-                <div class="globe-img-placeholder"><i class="fas fa-globe-americas"></i></div>
-                
-                <h2>Global Reach</h2>
-                <p>Supporting students both in India and other countries</p>
-
-                <div class="cards-carousel">
-                    <div class="learning-card">
-                        <div class="card-image">
-                            <img src="static/unsplash_LLfRMRT-9AY (1).png" alt="Graduates">
-                        </div>
-                        <div class="card-content">
-                            <h4>Learning Platform</h4>
-                            <p>AI is shaping how the world works. H7 EdTech supports students, managers and tracks educational courses and training programs to make education more organized, efficient and accessible.</p>
-                            <a href="learning.html" class="btn-small">Read More</a>
-                        </div>
-                    </div>
-                    <div class="learning-card">
-                        <div class="card-image">
-                            <img src="static/unsplash_bZ_RkRKE0Po (1).png" alt="Online Courses">
-                        </div>
-                        <div class="card-content">
-                            <h4>Online Courses</h4>
-                            <p>Access a wide range of courses from anywhere, anytime. Our flexible online learning options cater to your schedule and needs.</p>
-                            <a href="online.html" class="btn-small">Read More</a>
-                        </div>
-                    </div>
-                    <div class="learning-card">
-                        <div class="card-image">
-                            <img src="static/unsplash_bZ_RkRKE0Po (2).png" alt="Tuition">
-                        </div>
-                        <div class="card-content">
-                            <h4>Personalized Tuition</h4>
-                            <p>Get one-on-one attention and customized learning plans with our expert tutors to achieve your academic goals.</p>
-                            <a href="tution.html" class="btn-small">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="container features-grid-wrapper">
-                
-                <div class="side-image left">
-                    <img src="static\unsplash_Y45PpacE8UA.png" class="circle-img" alt="Student">
-                </div>
-
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="icon pink"><i class="fas fa-user-friends"></i></div>
+        <section class="features-section">
+            <div class="container feature-container">
+                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="circle-side-img" alt="Student">
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="fas fa-chair"></i></div> 
                         <h4>One on One Sessions</h4>
-                        <p>Personalized attention from specialized mentors tailored to your learning style and pace.</p>
+                        <p>Personalized attention from qualified teachers tailored to your learning style.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="icon pink"><i class="fas fa-laptop-code"></i></div>
-                        <h4>E-learning Content Development</h4>
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="fas fa-play-circle"></i></div>
+                        <h4>E-Learning Content</h4>
                         <p>Creating engaging and interactive digital learning materials.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="icon pink"><i class="fas fa-book-reader"></i></div>
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="fas fa-book"></i></div>
                         <h4>LMS Integration</h4>
                         <p>Facilitating online course delivery and management.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="icon pink"><i class="fas fa-chalkboard-teacher"></i></div>
-                        <h4>Virtual Classroom Solutions</h4>
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="fas fa-desktop"></i></div>
+                        <h4>Virtual Classroom</h4>
                         <p>Providing technology for interactive and remote learning.</p>
                     </div>
                 </div>
-
-                <div class="side-image right">
-                    <img src="styles\ChatGPT Image Sep 9, 2025, 01_30_00 PM 1.png" class="circle-img" alt="Tutor">
-                </div>
+                 <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="circle-side-img" alt="Tutor">
             </div>
         </section>
 
         <section class="faq-section">
             <div class="container">
                 <h2>FREQUENTLY ASKED QUESTIONS</h2>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <span>What type of platform is H7?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-item">
-                        <span>Who is H7 for?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-item">
-                        <span>What can you learn through H7 EdTech?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-item">
-                        <span>Does the platform include parent support?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
+                <div class="faq-container">
+                    <div class="faq-row"><span>What type of platform is H7?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-row"><span>Who is H7 for?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-row"><span>What can you learn through H7 EdTech?</span> <i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-row"><span>Does the platform include parent support?</span> <i class="fas fa-chevron-down"></i></div>
                 </div>
             </div>
         </section>
 
-        <section class="contact-section" id="contact">
-            <div class="container">
-                <div class="contact-card">
-                    <h3>Contact Us</h3>
-                    <form>
-                        <label>Name</label>
-                        <input type="text">
-                        
-                        <label>Email</label>
-                        <input type="email">
-                        
-                        <label>Message</label>
-                        <textarea rows="5"></textarea>
-                        
-                        <button type="submit" class="btn-dark">Send</button>
-                    </form>
+        <section class="booking-section">
+            <div class="booking-card">
+                <div class="booking-header">
+                    <i class="fas fa-info-circle"></i> BOOK A DEMO
                 </div>
+                <form class="form-grid">
+                    <input type="text" class="form-input" placeholder="Student Name">
+                    <input type="text" class="form-input" placeholder="Parent Name">
+                    <div class="form-row">
+                        <select class="form-input"><option>Grade</option><option>Grade 5</option></select>
+                        <select class="form-input"><option>Syllabus</option><option>CBSE</option></select>
+                    </div>
+                    <input type="text" class="form-input" placeholder="Subjects">
+                    <div class="form-row">
+                        <input type="text" class="form-input" placeholder="Current Location">
+                        <input type="text" class="form-input" placeholder="Mobile Number">
+                    </div>
+                    <button type="submit" class="btn-submit">Send</button>
+                </form>
             </div>
         </section>
-
     </main>
 
     <footer>
-        <div class="container footer-content">
+        <div class="container footer-flex">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <img src="static/logo.png" alt="">H7 EdTech
+                    <img src="https://via.placeholder.com/40x40?text=H7" alt="H7 Logo">
                 </div>
-                <p>academics@h7ed.com | Ph: 9207773300 | @h7_education_</p>
-                <div class="sub-logo">
-                    <img src="static/IMG-20250828-WA0000 2.png" alt=""> Hamdas Technologies
-                </div>
+                <p>H7 EdTech | academics@h7ed.com | Hamdas Technologies</p>
             </div>
-            <div class="footer-right">
+            <div class="footer-icons">
                 <a href="#"><i class="fab fa-google-play"></i></a>
                 <a href="#"><i class="fab fa-linkedin"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>

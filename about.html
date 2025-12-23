@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H7 EdTech - Hybrid Platform</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         /* --- Reset & Variables --- */
         :root {
@@ -34,6 +35,25 @@
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 24px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            text-decoration: none;
+            color: #555;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            background: #f0f0f0;
         }
 
         /* --- Header Section --- */
@@ -279,6 +299,9 @@
     </style>
 </head>
 <body>
+    <a href="javascript:history.back()" class="btn-back" style="margin: 20px;">
+        <i class="fas fa-arrow-left"></i> Back
+    </a>
 
     <header>
         <div class="container">

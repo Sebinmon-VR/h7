@@ -178,25 +178,36 @@
             }
             .nav-pill { display: none; }
         }
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 24px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            text-decoration: none;
+            color: #555;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            background: #f0f0f0;
+        }
     </style>
 </head>
 <body>
 
-    <header class="container">
-        <a href="#" class="logo"><img src="static\logo.png" alt="Logo"></a>
-        
-        <div class="nav-container">
-            <div class="nav-pill" style="margin: 0 auto;">
-                <a href="#">Home</a>
-                <a href="#" class="active">Courses</a>
-                <a href="#">About</a>
-            </div>
-        </div>
-    </header>
+
 
     <main class="container">
         
-        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back</a>
+          <a href="index.html" class="btn-back" style="margin: 20px;">
+        <i class="fas fa-arrow-left"></i> Back
+    </a>
         <h1 class="main-title">H7 is a complete academic ecosystem</h1>
 
         <div class="ecosystem-card">

@@ -89,7 +89,7 @@
             padding: 60px 0;
             position: relative;
             /* Topographic pattern simulation */
-            background-image: repeating-radial-gradient( circle at 50% 50%, transparent 0, var(--primary-purple) 15px ), repeating-linear-gradient( rgba(255,255,255,0.03), rgba(255,255,255,0.03) );
+            background-image:url("static/Pattern Bg.png");
         }
 
         /* Pattern overlay SVG */
@@ -97,7 +97,6 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M-10 20 Q 20 80 50 20" stroke="rgba(255,255,255,0.05)" fill="none"/><path d="M50 80 Q 80 20 110 80" stroke="rgba(255,255,255,0.05)" fill="none"/></svg>');
             background-size: 100px 100px;
             pointer-events: none;
         }

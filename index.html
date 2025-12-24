@@ -30,7 +30,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* CHANGED: Applied Outfit font globally */
             font-family: 'Outfit', sans-serif;
         }
 
@@ -101,7 +100,6 @@
 
         .hero-text { flex: 1; padding-right: 50px; }
 
-        /* CHANGED: Lighter purple color */
         .hero-subtitle {
             color: var(--text-purple-light);
             font-weight: 700;
@@ -110,7 +108,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* CHANGED: Complex gradient text logic */
         .hero-title {
             margin: 0;
             margin-bottom: 20px;
@@ -149,12 +146,11 @@
 
         .hero-buttons { display: flex; gap: 20px; }
 
-        /* CHANGED: Bright Mint Green Button */
         .btn-teal {
             background-color: var(--accent-green);
             color: #1a1a1a;
             padding: 15px 35px;
-            border-radius: 12px; /* Softer radius */
+            border-radius: 12px;
             font-weight: 700;
             box-shadow: 0 4px 15px rgba(51, 253, 158, 0.4);
             text-transform: uppercase;
@@ -165,7 +161,6 @@
         }
         .btn-teal:hover { transform: translateY(-2px); }
 
-        /* CHANGED: Gradient Border Button */
         .btn-outline-gradient {
             padding: 15px 35px;
             border-radius: 12px;
@@ -217,7 +212,6 @@
             min-height: 220px;
         }
 
-        /* CHANGED: White text to be visible on dark background */
         .curve-text {
             font-size: 15px;
             font-weight: 700;
@@ -360,11 +354,103 @@
         .feature-box h4 { font-size: 1.1rem; margin-bottom: 15px; color: var(--text-purple); font-weight: 700; }
         .feature-box p { font-size: 0.9rem; color: #999; line-height: 1.6; }
 
-        /* --- FAQ --- */
-        .faq-section { background: var(--primary-dark-purple); padding: 60px 0; text-align: center; }
-        .faq-section h2 { color: var(--text-white); font-size: 1.5rem; margin-bottom: 40px; letter-spacing: 2px; font-weight: 700; }
-        .faq-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
-        .faq-row { background: white; padding: 15px 25px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 1rem; color: var(--text-purple); cursor: pointer; font-weight: 500; }
+        /* --- FAQ Section CSS --- */
+        .faq-section { 
+            background: var(--primary-dark-purple); 
+            padding: 80px 0; 
+            text-align: center; 
+        }
+
+        .faq-section h2 { 
+            color: var(--text-white); 
+            font-size: 1.5rem; 
+            margin-bottom: 50px; 
+            letter-spacing: 2px; 
+            font-weight: 700; 
+        }
+
+        .faq-container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+
+        .faq-item {
+            background: transparent;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent; 
+        }
+
+        /* Active State Visuals */
+        .faq-item.active {
+            border: 2px dashed #6b628f;
+            padding: 10px;
+        }
+
+        .faq-question { 
+            background: white; 
+            padding: 20px 25px; 
+            border-radius: 8px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            font-size: 1rem; 
+            color: var(--text-dark); 
+            cursor: pointer; 
+            font-weight: 600; 
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #f9f9f9;
+        }
+
+        .faq-question i {
+            color: var(--text-purple);
+            transition: transform 0.3s ease;
+        }
+
+        /* Rotate arrow when active */
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: white;
+            border-radius: 0 0 8px 8px; 
+        }
+        
+        .faq-item.active .faq-answer {
+             border-top: 1px solid #eee;
+        }
+        
+        .faq-item.active .faq-question {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        
+        .faq-item.active .faq-answer {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .faq-answer p {
+            padding: 20px 25px;
+            color: #666;
+            text-align: left;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin: 0;
+        }
 
         /* --- Booking Form --- */
         .booking-section {
@@ -567,10 +653,47 @@
             <div class="container">
                 <h2>FREQUENTLY ASKED QUESTIONS</h2>
                 <div class="faq-container">
-                    <div class="faq-row"><span>What type of platform is H7?</span> <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-row"><span>Who is H7 for?</span> <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-row"><span>What can you learn through H7 EdTech?</span> <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-row"><span>Does the platform include parent support?</span> <i class="fas fa-chevron-down"></i></div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What type of platform is H7?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>H7 is a hybrid education platform. We combine online and technology-based methods to enhance the learning process.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Who is H7 for?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>This platform is designed for students from KG to Grade 12, offering both academic and skill-based education.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What can you learn through H7 EdTech?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Core subjects such as English, Math, Science and Malayalam. Also creative skills like music, craft, and abacus.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Does the platform include parent support?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Parents can track their child's academic performance through report generation, monitor assignments, and get alerts.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -605,7 +728,7 @@
                     <img src="static\logo.png" alt="H7">
                 </div>
                 <strong>H7 EdTech</strong><br>
-                academics@h7ed.com |Ph: 9207773300 | @h7_education_...
+                academics@h7ed.com |Ph: 9207773300 | @h7_education_
                 <br><br>
                 <div style="display:flex; align-items:center; gap:5px;">
                    <img src="static\IMG-20250828-WA0000 2.png" alt=""> Hamdas Technologies
@@ -620,5 +743,32 @@
         </div>
     </footer>
 
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            question.addEventListener('click', () => {
+                // Close other open items (optional - remove this block if you want multiple open at once)
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                    }
+                });
+
+                // Toggle current item
+                item.classList.toggle('active');
+
+                if (item.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                } else {
+                    answer.style.maxHeight = null;
+                }
+            });
+        });
+    </script>
 </body>
 </html>

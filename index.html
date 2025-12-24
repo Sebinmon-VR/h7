@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H7 EdTech - Shape the Future</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- CSS Reset & Variables --- */
         :root {
-            /* Dark Purple for Global Section & Footer */
+            /* Palette Update */
             --primary-dark-purple: #322E4F; 
-            /* Light Purple for Hero & Features */
             --primary-light-purple: #F5F2FB; 
-            /* The Band Color (Lilac) */
             --curve-band-color: #D6CDEA;
-            /* Teal/Cyan for Accents */
-            --accent-teal: #4EE2C3;
-            /* Text Colors */
+            
+            /* New Colors for Exact Match */
+            --accent-green: #33fd9e; /* Bright Mint */
+            --text-purple-light: #bd68ee; /* Lighter purple for subtitles */
+            
             --text-dark: #333;
             --text-purple: #7A6C97;
             --text-white: #fff;
@@ -28,11 +30,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            /* CHANGED: Applied Outfit font globally */
+            font-family: 'Outfit', sans-serif;
         }
 
         body {
-            background-color: var(--bg-light);
+            background-color: var(--primary-light-purple);
             overflow-x: hidden;
         }
 
@@ -62,6 +65,7 @@
             border-radius: 30px;
             display: flex;
             gap: 30px;
+            margin: 0 auto;
         }
 
         .nav-pill a {
@@ -72,6 +76,12 @@
         
         .nav-pill a.active { font-weight: 700; }
         .contact-us-link { color: var(--text-purple); font-size: 0.9rem; font-weight: 600;}
+
+        .nav-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
 
         /* --- Hero Section --- */
         .hero-section {
@@ -91,54 +101,91 @@
 
         .hero-text { flex: 1; padding-right: 50px; }
 
+        /* CHANGED: Lighter purple color */
         .hero-subtitle {
-            color: var(--text-purple);
-            font-weight: 600;
+            color: var(--text-purple-light);
+            font-weight: 700;
             margin-bottom: 10px;
-            text-transform: uppercase;
-            font-size: 1rem;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
         }
 
+        /* CHANGED: Complex gradient text logic */
         .hero-title {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            color: var(--accent-teal);
-            font-weight: 800;
+            margin: 0;
             margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        /* Top line: Pastel gradient */
+        .hero-title .top-line {
+            display: block;
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #c4b6f0, #a8dfee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        /* Bottom line: Purple to Green/Cyan gradient */
+        .hero-title .bottom-line {
+            display: block;
+            font-size: 6.5rem;
+            font-weight: 400; /* Thinner weight for the big text */
+            background: linear-gradient(90deg, #cbaaf4 0%, #aee3f1 50%, #7ce0c7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-desc {
-            color: var(--text-purple);
+            color: #8b8b9e;
             margin-bottom: 30px;
             max-width: 450px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             line-height: 1.6;
+            font-weight: 500;
         }
 
         .hero-buttons { display: flex; gap: 20px; }
 
+        /* CHANGED: Bright Mint Green Button */
         .btn-teal {
-            background-color: var(--accent-teal);
-            color: var(--primary-dark-purple);
+            background-color: var(--accent-green);
+            color: #1a1a1a;
             padding: 15px 35px;
-            border-radius: 30px;
+            border-radius: 12px; /* Softer radius */
             font-weight: 700;
-            box-shadow: 0 5px 15px rgba(78, 226, 195, 0.4);
+            box-shadow: 0 4px 15px rgba(51, 253, 158, 0.4);
             text-transform: uppercase;
             font-size: 0.9rem;
             border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
+        .btn-teal:hover { transform: translateY(-2px); }
 
-        .btn-outline-white {
-            background: transparent;
-            color: var(--text-purple);
-            border: 2px solid var(--text-purple);
+        /* CHANGED: Gradient Border Button */
+        .btn-outline-gradient {
             padding: 15px 35px;
-            border-radius: 30px;
+            border-radius: 12px;
             font-weight: 700;
             text-transform: uppercase;
             font-size: 0.9rem;
+            cursor: pointer;
+            background: white;
+            color: #555;
+            /* Trick for gradient border */
+            border: 2px solid transparent;
+            background-image: linear-gradient(white, white), 
+                              linear-gradient(90deg, #bd68ee, #7ce0c7);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
         }
+        .btn-outline-gradient:hover { transform: translateY(-2px); }
+
 
         .hero-image {
             flex: 1;
@@ -147,51 +194,39 @@
             justify-content: center;
         }
         
-        .hero-image::before {
-            content: '';
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            background: var(--accent-teal);
-            border-radius: 50%;
-            z-index: 0;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0.2;
-        }
-
         .hero-image img {
             position: relative;
             z-index: 1;
             width: 400px;
         }
 
-/* --- SVG Curve --- */
-.svg-curve-divider {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    z-index: 2;
-    overflow: hidden; /* CRITICAL: Hides the wide start/end points */
-}
+        /* --- SVG Curve --- */
+        .svg-curve-divider {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+            overflow: hidden;
+        }
 
-.svg-curve-divider svg {
-    display: block;
-    width: 100%;
-    height: auto;
-    min-height: 220px; /* Increased slightly to give the arch headroom */
-}
+        .svg-curve-divider svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            min-height: 220px;
+        }
 
-.curve-text {
-    font-size: 15px;
-    font-weight: 800;
-    fill: #322E4F;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-family: 'Poppins', sans-serif;
-}
+        /* CHANGED: White text to be visible on dark background */
+        .curve-text {
+            font-size: 15px;
+            font-weight: 700;
+            fill: white; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Outfit', sans-serif;
+        }
+
         /* --- Global Reach Section --- */
         .global-section {
             background-color: var(--primary-dark-purple);
@@ -356,10 +391,10 @@
 
         /* --- Footer --- */
         footer { background: var(--primary-dark-purple); color: rgba(255,255,255,0.7); padding: 60px 0; font-size: 0.9rem; }
-        .footer-flex { display: flex; justify-content: space-between; align-items: center; }
+        .footer-flex { display: flex; justify-content: space-between; align-items: center; } /* Added utility class */
         .footer-logo img { height: 40px; margin-bottom: 15px; }
         .footer-icons a { color: var(--text-white); margin-left: 20px; font-size: 1.5rem; transition: color 0.3s; }
-        .footer-icons a:hover { color: var(--accent-teal); }
+        .footer-icons a:hover { color: var(--accent-green); }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -368,9 +403,12 @@
             .hero-section { padding-bottom: 150px; } 
             .hero-content { flex-direction: column; text-align: center; }
             .hero-text { padding-right: 0; margin-bottom: 50px; }
-            .hero-title { font-size: 3rem; }
+            
+            /* Adjust title sizes for mobile */
+            .hero-title .top-line { font-size: 3rem; }
+            .hero-title .bottom-line { font-size: 4rem; }
+            
             .hero-buttons { justify-content: center; }
-            .hero-image::before { width: 300px; height: 300px; }
             .hero-image img { width: 280px; }
             .curve-text { font-size: 24px; letter-spacing: 1px; }
             .world-map-container { height: auto; flex-direction: column; margin-top: 50px; gap: 20px;}
@@ -381,7 +419,7 @@
             .circle-side-img { display: none; }
             .feature-grid { grid-template-columns: 1fr; }
             .form-row { grid-template-columns: 1fr; }
-            .footer-flex { flex-direction: column; gap: 30px; text-align: center; }
+            .footer-flex { flex-direction: column; gap: 30px; text-align: center; } /* Updated */
             .footer-icons a { margin: 0 10px; }
         }
     </style>
@@ -392,10 +430,12 @@
         <div class="logo">
             <img src="static/logo.png" alt="H7 Logo"> 
         </div>
-        <div class="nav-pill">
-            <a href="#" class="active">Home</a>
-            <a href="courses.html">Courses</a>
-            <a href="about.html">About</a>
+        <div class="nav-container">
+            <div class="nav-pill">
+                <a href="#" class="active">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="about.html">About</a>
+            </div>
         </div>
         <div class="contact-us-link">
             <a href="#">Contact Us</a>
@@ -407,35 +447,41 @@
             <div class="container hero-content">
                 <div class="hero-text">
                     <p class="hero-subtitle">Learn with H7 EdTech</p>
-                    <h1 class="hero-title">SHAPE THE <br> <span>FUTURE</span></h1>
-                    <p class="hero-desc">Your journey starts with H7. We offer limitless education for worldwide students. Join thousands of learners who've discovered smarter ways to learn.</p>
+                    
+                    <h1 class="hero-title">
+                        <span class="top-line">SHAPE THE</span> 
+                        <span class="bottom-line">FUTURE</span>
+                    </h1>
+                    
+                    <p class="hero-desc">Your journey starts with H7. We offer limitless education for worldwide students. Join thousands of learners who've discovered smarter, simpler and more meaningful ways to learn.</p>
+                    
                     <div class="hero-buttons">
                         <button class="btn-teal">Chat On Whatsapp</button>
-                        <button class="btn-outline-white">Book A Demo</button>
+                        <button class="btn-outline-gradient">Book A Demo</button>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Student with Folder">
+                    <img src="static\IMAGE (6).png" alt="Student with Folder">
                 </div>
             </div>
 
-          <div class="svg-curve-divider">
-    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <defs>
-            <path id="curveArch" d="M-250,320 Q720,60 1690,320" />
-        </defs>
+            <div class="svg-curve-divider">
+                <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <defs>
+                        <path id="curveArch" d="M-250,320 Q720,60 1690,320" />
+                    </defs>
 
-        <path d="M-250,320 Q720,60 1690,320 L1690,400 L-250,400 Z" fill="#322E4F"></path>
+                    <path d="M-250,320 Q720,60 1690,320 L1690,400 L-250,400 Z" fill="#322E4F"></path>
 
-        <use href="#curveArch" fill="none" stroke="#D6CDEA" stroke-width="100" stroke-linecap="butt" />
+                    <use href="#curveArch" fill="none" stroke="#D6CDEA" stroke-width="100" stroke-linecap="butt" />
 
-        <text class="curve-text">
-            <textPath href="#curveArch" startOffset="50%" text-anchor="middle" dy="-10">
-                SCHOOL SUBJECTS &nbsp;&nbsp;&nbsp; LANGUAGES &nbsp;&nbsp;&nbsp; CODING & AI &nbsp;&nbsp;&nbsp; ART & CRAFT &nbsp;&nbsp;&nbsp; ABACUS &nbsp;&nbsp;&nbsp; VEDIC MATHS &nbsp;&nbsp;&nbsp; PUBLIC SPEAKING
-            </textPath>
-        </text>
-    </svg>
-</div>
+                    <text class="curve-text">
+                        <textPath href="#curveArch" startOffset="50%" text-anchor="middle" dy="-10">
+                            SCHOOL SUBJECTS &nbsp;&nbsp;&nbsp; LANGUAGES &nbsp;&nbsp;&nbsp; CODING & AI &nbsp;&nbsp;&nbsp; ART & CRAFT &nbsp;&nbsp;&nbsp; ABACUS &nbsp;&nbsp;&nbsp; VEDIC MATHS &nbsp;&nbsp;&nbsp; PUBLIC SPEAKING
+                        </textPath>
+                    </text>
+                </svg>
+            </div>
         </section>
 
         <section class="global-section">
@@ -460,7 +506,7 @@
                 <div class="dark-cards-section">
                     <div class="dark-cards-row">
                         <div class="dark-card">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Learning Platform">
+                            <img src="static\unsplash_LLfRMRT-9AY (1).png" alt="Learning Platform">
                             <div class="dark-card-body">
                                 <h4>Learning Platform</h4>
                                 <p>AI is shaping how the world works. H7 EdTech supports students and tracks educational progress efficiently.</p>
@@ -468,7 +514,7 @@
                             </div>
                         </div>
                         <div class="dark-card">
-                             <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Online Education">
+                             <img src="static\unsplash_yR9jnl7UJ_Y.png" alt="Online Education">
                             <div class="dark-card-body">
                                 <h4>Online Education</h4>
                                 <p>Integrated quality network of online education workbook through efficient lessons and interactive tools.</p>
@@ -476,7 +522,7 @@
                             </div>
                         </div>
                         <div class="dark-card">
-                             <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Personal Tuitions">
+                             <img src="static\unsplash_aFiUz4BG3ug.png" alt="Personal Tuitions">
                             <div class="dark-card-body">
                                 <h4>Personal Tuitions</h4>
                                 <p>Whether personalized in mastering new skills or support, connecting people through effective platforms.</p>
@@ -490,30 +536,30 @@
 
         <section class="features-section">
             <div class="container feature-container">
-                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="circle-side-img" alt="Student">
+                 <img src="static\unsplash_Y45PpacE8UA.png" class="circle-side-img" alt="Student">
                 <div class="feature-grid">
                     <div class="feature-box">
-                        <div class="feature-icon"><i class="fas fa-chair"></i></div> 
+                        <div class="feature-icon"><img src="static\Frame.png"></div> 
                         <h4>One on One Sessions</h4>
                         <p>Personalized attention from qualified teachers tailored to your learning style.</p>
                     </div>
                     <div class="feature-box">
-                        <div class="feature-icon"><i class="fas fa-play-circle"></i></div>
+                        <div class="feature-icon"><img src="static\Frame (1).png"></div>
                         <h4>E-Learning Content</h4>
                         <p>Creating engaging and interactive digital learning materials.</p>
                     </div>
                     <div class="feature-box">
-                        <div class="feature-icon"><i class="fas fa-book"></i></div>
+                        <div class="feature-icon"><img src="static\Frame (2).png"></div>
                         <h4>LMS Integration</h4>
                         <p>Facilitating online course delivery and management.</p>
                     </div>
                     <div class="feature-box">
-                        <div class="feature-icon"><i class="fas fa-desktop"></i></div>
+                        <div class="feature-icon"><img src="static\Frame (3).png"></div>
                         <h4>Virtual Classroom</h4>
                         <p>Providing technology for interactive and remote learning.</p>
                     </div>
                 </div>
-                 <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="circle-side-img" alt="Tutor">
+                 <img src="static\ChatGPT Image Sep 9, 2025, 01_30_00 PM 1 (1).png" class="circle-side-img" alt="Tutor">
             </div>
         </section>
 
@@ -556,9 +602,14 @@
         <div class="container footer-flex">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <img src="https://via.placeholder.com/40x40?text=H7" alt="H7 Logo">
+                    <img src="static\logo.png" alt="H7">
                 </div>
-                <p>H7 EdTech | academics@h7ed.com | Hamdas Technologies</p>
+                <strong>H7 EdTech</strong><br>
+                academics@h7ed.com |Ph: 9207773300 | @h7_education_...
+                <br><br>
+                <div style="display:flex; align-items:center; gap:5px;">
+                   <img src="static\IMG-20250828-WA0000 2.png" alt=""> Hamdas Technologies
+                </div>
             </div>
             <div class="footer-icons">
                 <a href="#"><i class="fab fa-google-play"></i></a>

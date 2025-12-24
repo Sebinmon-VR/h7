@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- Reset & Variables --- */
+        /* --- CSS Reset & Colors --- */
         :root {
-            --primary-purple: #554B68; /* The dark purple background */
-            --accent-purple: #BFAEE3;  /* Light purple for headers */
+            --primary-dark: #554B68; /* Dark purple text/bg */
+            --banner-bg: #594D6D;    /* The main purple banner */
+            --card-light-purple: #D4CBE5; /* The cards in bottom section */
+            --bg-body: #FBFCFE;
             --text-dark: #333;
-            --text-light: #fff;
-            --bg-body: #F8F9FD;
-            --border-radius-card: 16px;
-            --shadow: 0 4px 20px rgba(0,0,0,0.05);
+            --pill-bg: #C6BBE3;
         }
 
         * {
@@ -29,358 +28,352 @@
         body {
             background-color: var(--bg-body);
             color: var(--text-dark);
-            padding: 40px 20px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a { text-decoration: none; }
+        ul { list-style: none; }
+
+        /* --- Header --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        .logo img { height: 40px; }
+
+        .nav-pill {
+            background: #EAEAEA;
+            padding: 6px 30px;
+            border-radius: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-pill a {
+            color: #666;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .nav-pill a.active { 
+            background-color: #D4CBE5; 
+            color: #554B68;
+            font-weight: 600;
+            padding: 2px 15px;
+            border-radius: 15px;
+        }
+
+        .nav-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
         }
 
         /* --- Top Section --- */
-        .top-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 40px;
-            gap: 40px;
-        }
-
-        .top-left {
-            flex: 1;
-            padding-top: 10px;
+        .top-content {
+            margin-bottom: 30px;
         }
 
         .btn-back {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 24px;
-            border: 1px solid #ccc;
+            padding: 6px 20px;
+            border: 1px solid #aaa;
             border-radius: 30px;
-            text-decoration: none;
             color: #555;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-            background: white;
-            transition: all 0.2s;
-        }
-
-        .btn-back:hover {
-            background: #f0f0f0;
-        }
-
-        .top-headline {
-            font-size: 1.8rem;
-            line-height: 1.4;
-            color: #444;
-            font-weight: 600;
-            max-width: 500px;
-        }
-
-        .platform-card {
-            background: white;
-            border-radius: var(--border-radius-card);
-            box-shadow: var(--shadow);
-            width: 280px;
-            overflow: hidden;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .platform-header {
-            background-color: #C6BBE3; /* Muted purple header */
-            color: #4a4a4a;
-            padding: 12px;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .platform-body {
-            padding: 30px 20px;
-        }
-
-        .platform-icon {
-            font-size: 3.5rem;
-            color: #4A4060;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .platform-body p {
             font-size: 0.8rem;
-            color: #777;
-            line-height: 1.4;
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: transparent;
+            cursor: pointer;
         }
 
-        /* --- Middle Section (Purple Banner) --- */
+        .tag-pill {
+            display: inline-block;
+            background-color: var(--pill-bg);
+            color: var(--primary-dark);
+            padding: 5px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .main-headline {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            line-height: 1.3;
+            max-width: 600px;
+        }
+
+        /* --- Purple Banner Section --- */
         .purple-banner {
-            background-color: var(--primary-purple);
+            background-color: var(--banner-bg);
             border-radius: 12px;
             padding: 40px;
             display: flex;
-            align-items: center;
             gap: 40px;
             color: white;
-            margin-bottom: 40px;
             position: relative;
             overflow: hidden;
-            /* Simulating the topographic map background pattern with a gradient */
-            background-image: repeating-radial-gradient( circle at 0 0, transparent 0, var(--primary-purple) 10px ), repeating-linear-gradient( rgba(255,255,255,0.03), rgba(255,255,255,0.03) );
+            margin-bottom: 40px;
+            background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #594D6D 10px ), repeating-linear-gradient( rgba(255,255,255,0.03), rgba(255,255,255,0.03) );
         }
 
-        /* Adding a subtle texture effect */
-        .purple-banner::before {
+        .purple-banner::after {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 10 Q 50 50 90 10" stroke="rgba(255,255,255,0.05)" fill="none"/><path d="M10 50 Q 50 90 90 50" stroke="rgba(255,255,255,0.05)" fill="none"/></svg>');
-            background-size: 100px 100px;
+            background-image: url('data:image/svg+xml;utf8,<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M0 50 Q 50 100 100 50 T 200 50" stroke="rgba(255,255,255,0.05)" fill="none" stroke-width="2"/></svg>');
             pointer-events: none;
         }
 
-        .banner-image {
-            flex: 0 0 35%;
+        .banner-img-container {
+            flex: 0 0 300px;
             z-index: 1;
         }
 
-        .banner-image img {
+        .banner-img-container img {
             width: 100%;
+            height: 300px; 
+            object-fit: cover;
             border-radius: 8px;
-            border: 4px solid rgba(255,255,255,0.1);
-            display: block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .banner-text {
             flex: 1;
             z-index: 1;
-            font-size: 0.85rem;
-            line-height: 1.8;
-            opacity: 0.9;
-            text-align: justify;
-        }
-
-        /* --- Bottom Section (Cards) --- */
-        .bottom-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 30px;
-        }
-
-        /* Form Card */
-        .card-white {
-            background: white;
-            padding: 40px;
-            border-radius: var(--border-radius-card);
-            box-shadow: var(--shadow);
-        }
-
-        .form-header {
-            color: #887DA3;
-            font-weight: 700;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .form-header span {
-            color: #554B68; /* Make "BOOK A" darker if needed, design shows mixed colors */
-        }
-
-        .booking-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .booking-form input,
-        .booking-form select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #eee;
-            background: #Fcfcfd;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            color: #666;
-            outline: none;
-        }
-
-        .booking-form input::placeholder {
-            color: #aaa;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 15px;
-        }
-
-        .form-row > * {
-            flex: 1;
-        }
-
-        .btn-submit {
-            background-color: var(--primary-purple);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 6px;
-            font-weight: 500;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-
-        .btn-submit:hover {
-            background-color: #433b52;
-        }
-
-        /* Logo Card */
-        .logo-card {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: #E0DEE5;
         }
 
-        .logo-icon {
-            font-size: 5rem;
-            color: #554B68;
+        .banner-text p {
             margin-bottom: 20px;
         }
-        
-        /* Using an SVG placeholder for the character reading book */
-        .illustration-placeholder {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 15px;
-            opacity: 0.8;
+
+        /* --- Bottom White Section --- */
+        .learn-more-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
         }
 
-        .brand-name {
+        .learn-more-label {
+            flex: 0 0 25%;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
             font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary-purple);
+            padding-right: 20px;
         }
-
-        .brand-tagline {
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+        
+        .arrow-icon {
+            font-size: 2rem;
+            margin-top: 10px;
             color: #888;
+            font-weight: 300;
         }
 
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .top-section {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            
-            .platform-card {
-                width: 100%;
-            }
+        .cards-wrapper {
+            flex: 1;
+            display: flex;
+            gap: 30px;
+        }
 
+        .info-card {
+            flex: 1;
+            background-color: var(--card-light-purple);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .card-desc {
+            font-size: 0.75rem;
+            color: #444;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .btn-read-more {
+            display: inline-block;
+            border: 1px solid #888;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #555;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #2C263F;
+            color: #aaa;
+            padding: 40px 0;
+            font-size: 0.8rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo img { height: 30px; margin-bottom: 5px; }
+        .footer-icons a { color: white; margin-left: 20px; font-size: 1.2rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
             .purple-banner {
                 flex-direction: column;
+                padding: 20px;
             }
-
-            .bottom-grid {
-                grid-template-columns: 1fr;
-            }
+            .banner-img-container { flex: auto; width: 100%; }
+            .banner-img-container img { height: 200px; }
             
-            .form-row {
+            .learn-more-container {
                 flex-direction: column;
-                gap: 15px;
+                padding: 20px;
+                gap: 30px;
             }
+            .learn-more-label { text-align: center; margin-bottom: 10px; }
+            .cards-wrapper { flex-direction: column; width: 100%; }
+            .nav-pill { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-
-        <div class="top-section">
-            <div class="top-left">
-                <a href="javascript:history.back()" class="btn-back">
-                    <i class="fas fa-arrow-left"></i> Back
-                </a>
-                <h1 class="top-headline">
-                    AI is redefining how the world learns.<br>
-                    H7 EdTech is at the center of that transformation.
-                </h1>
-            </div>
-
-            <div class="platform-card">
-                <div class="platform-header">Learning Platform</div>
-                <div class="platform-body">
-                    <img src="static/learning.png" alt="" style="width: 100px; height: 100px;">
-                    <p>Education made efficient, organized and accessible</p>
-                </div>
+    <header class="container">
+        <a href="#" class="logo"><img src="static\logo.png" alt="Logo"></a>
+        
+        <div class="nav-container">
+            <div class="nav-pill" style="margin: 0 auto;">
+                <a href="#">Home</a>
+                <a href="#" class="active">Courses</a>
+                <a href="#">About</a>
             </div>
         </div>
+    </header>
 
-        <div class="purple-banner">
-            <div class="banner-image">
-                <img src="static/unsplash_bZ_RkRKE0Po.png" alt="Graduate Student">
+    <main class="container">
+        
+        <div class="top-content">
+            <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back</a>
+            <br>
+            <span class="tag-pill">Learning Platform</span>
+            <h1 class="main-headline">
+                AI is redefining how the world learns.<br>
+                H7 EdTech is at the center of that transformation.
+            </h1>
+        </div>
+
+        <section class="purple-banner">
+            <div class="banner-img-container">
+                <img src="static\unsplash_bZ_RkRKE0Po.png" alt="Graduate Student">
             </div>
             <div class="banner-text">
-                <p>H7 is a next-generation learning platform that helps educators, organizations, and learners build a smarter path to knowledge. From designing interactive courses to managing complex training programs, we make education seamless, structured, and engaging.</p>
-                <br>
-                <p>With AI-driven tools, personalized learning journeys, and powerful analytics, H7 empowers institutions to understand progress in real time and helps learners stay motivated and on track. H7 turns every learning experience into an organized, efficient, and accessible journey toward growth.</p>
+                <p>
+                    H7 is a next-generation learning platform that helps educators, organizations, and learners build a smarter path to knowledge. From designing interactive courses to managing complex training programs, we make education seamless, structured, and engaging.
+                </p>
+                <p>
+                    With AI-driven tools, personalized learning journeys, and powerful analytics, H7 empowers institutions to understand progress in real time and helps learners stay motivated and on track. H7 turns every learning experience into an organized, efficient, and accessible journey toward growth.
+                </p>
+            </div>
+        </section>
+
+        <section class="learn-more-container">
+            <div class="learn-more-label">
+                Learn More<br>About Us
+                <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
+            </div>
+
+            <div class="cards-wrapper">
+                
+                <div class="info-card">
+                    <h4 class="card-title">Online Education</h4>
+                    <img src="static\unsplash_yR9jnl7UJ_Y.png" class="card-img" alt="Online Education">
+                    <p class="card-desc">
+                        H7 enhances the quality and reach of online education just double through live video sessions, digital assignments and interactive tools. H7 offers flexibility, personalized learning, and access to knowledge for worldwide students.
+                    </p>
+                    <button  class="btn-read-more " ><a href="online.html">Read More</a></button>
+                </div>
+
+                <div class="info-card">
+                    <h4 class="card-title">Personal Tuitions</h4>
+                    <img src="static\unsplash_aFiUz4BG3ug.png" class="card-img" alt="Personal Tuitions">
+                    <p class="card-desc">
+                        H7 delivers personalized 1:1 mentoring and educational support. Connects students to a wide range of tutors globally through interactive platforms. Tailored to a student's needs and priority.
+                    </p>
+                    <button class="btn-read-more"><a href="tution.html">Read More</a></button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="static\logo.png" alt="H7">
+                </div>
+                <strong>H7 EdTech</strong><br>
+                academics@h7ed.com |Ph: 9207773300 | @h7_education_...
+                <br><br>
+                <div style="display:flex; align-items:center; gap:5px;">
+                   <img src="static\IMG-20250828-WA0000 2.png" alt=""> Hamdas Technologies
+                </div>
+            </div>
+            <div class="footer-icons">
+                <a href="#"><i class="fab fa-google-play"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
             </div>
         </div>
-
-        <div class="bottom-grid">
-            
-            <div class="card-white">
-                <div class="form-header">
-                    <i class="fas fa-info-circle"></i>
-                    <span>BOOK A <span style="color:#BFAEE3;">DEMO</span></span>
-                </div>
-                <form class="booking-form">
-                    <input type="text" placeholder="Student Name">
-                    <input type="text" placeholder="Parent Name">
-                    
-                    <div class="form-row">
-                        <select>
-                            <option value="" disabled selected>Grade</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                        <select>
-                            <option value="" disabled selected>Syllabus</option>
-                            <option value="cbse">CBSE</option>
-                            <option value="icse">ICSE</option>
-                        </select>
-                    </div>
-
-                    <input type="text" placeholder="Subjects">
-                    
-                    <div class="form-row">
-                        <input type="text" placeholder="Current Location">
-                        <input type="text" placeholder="Mobile Number">
-                    </div>
-
-                    <button type="submit" class="btn-submit">Send</button>
-                </form>
-            </div>
-
-            <div class="card-white logo-card">
-                <div style="font-size: 4rem; color: #554B68; margin-bottom: 10px;">
-                    <img src="static/Frame 130.png" alt="H7 Logo" style="width: 200px;height: 200px;">
-                </div>
-                <div class="brand-name">H7 EdTech</div>
-                <div class="brand-tagline">SHAPE THE FUTURE</div>
-            </div>
-
-        </div>
-
-    </div>
+    </footer>
 
 </body>
 </html>

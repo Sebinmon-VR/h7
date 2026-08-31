@@ -3,414 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H7 EdTech - Hybrid Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>About | H7 EdTech</title>
+    <meta name="description" content="H7 EdTech is a hybrid platform combining online and technology-based methods to enhance the learning process for students from KG to Grade 12.">
+    <link rel="icon" href="static/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* --- Reset & Variables --- */
-        :root {
-            --primary-purple: #554B68;
-            --dark-box-bg: #2E2836; /* Darker background for the feature boxes */
-            --teal-border: #A0E0E0; /* Border for contact form */
-            --text-dark: #333;
-            --text-light: #fff;
-            --bg-body: #FDFDFD;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 24px;
-            border: 1px solid #ccc;
-            border-radius: 30px;
-            text-decoration: none;
-            color: #555;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-            background: white;
-            transition: all 0.2s;
-        }
-
-        .btn-back:hover {
-            background: #f0f0f0;
-        }
-
-        /* --- Header Section --- */
-        header {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .logo {
-            font-size: 3rem;
-            font-weight: 700;
-            /* Mimicking the logo gradient */
-            background: linear-gradient(135deg, #00C6FF, #FF72E3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            display: inline-block;
-            font-style: italic;
-        }
-
-        .main-headline {
-            font-size: 1.1rem;
-            color: #554B68;
-            font-weight: 600;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-
-        /* --- Hero Section (Purple Grid) --- */
-        .hero-section {
-            background-color: var(--primary-purple);
-            padding: 60px 0;
-            position: relative;
-            /* Topographic pattern simulation */
-            background-image:url("static/Pattern Bg.png");
-        }
-
-        /* Pattern overlay SVG */
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-size: 100px 100px;
-            pointer-events: none;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr 1fr;
-            gap: 30px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Feature Boxes */
-        .feature-box {
-            background-color: var(--dark-box-bg);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 20px;
-            color: white;
-            font-size: 0.8rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .feature-box:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Center Image */
-        .center-image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        .center-image {
-            width: 100%;
-            height: 380px; /* Taller portrait orientation */
-            object-fit: cover;
-            border-radius: 20px;
-            border: 4px solid rgba(255,255,255,0.8);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        /* --- Ecosystem Text Section --- */
-        .ecosystem-section {
-            padding: 60px 20px;
-            background-color: #FAFAFC;
-        }
-
-        .text-card {
-            background: white;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            text-align: left;
-        }
-
-        .ecosystem-section h2 {
-            text-align: center;
-            color: #554B68;
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-            font-weight: 700;
-        }
-
-        .ecosystem-section p {
-            font-size: 0.85rem;
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .why-choose {
-            margin: 20px 0;
-            padding-left: 20px;
-        }
-
-        .why-choose li {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 8px;
-            list-style-type: none;
-            position: relative;
-        }
-        
-        .why-choose li::before {
-            content: "•";
-            color: #554B68;
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        }
-
-        /* --- Contact Section --- */
-        .contact-section {
-            padding: 60px 0 100px;
-            background-color: #fff;
-            /* Dotted pattern background */
-            background-image: radial-gradient(#E0E0E0 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-
-        .contact-form-card {
-            max-width: 700px;
-            margin: 0 auto;
-            background: white;
-            border: 2px solid var(--teal-border);
-            border-radius: 16px;
-            padding: 40px 50px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-        }
-
-        .contact-form-card h3 {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 1.2rem;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            color: #444;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            background-color: #FAFAFC;
-            border: 1px solid #EEE;
-            border-radius: 6px;
-            outline: none;
-            color: #555;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            background-color: white;
-            border-color: #ccc;
-        }
-
-        .btn-send {
-            width: 100%;
-            background-color: #554B68;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-            margin-top: 10px;
-        }
-
-        .btn-send:hover {
-            background-color: #3E364F;
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 900px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .center-image-container {
-                order: -1; /* Move image to top on mobile */
-                margin-bottom: 30px;
-            }
-            
-            .center-image {
-                height: 250px;
-                max-width: 400px;
-            }
-
-            .feature-box {
-                text-align: center;
-            }
-            
-            .contact-form-card {
-                margin: 0 20px;
-                padding: 30px 20px;
-            }
-        }
-
-               /* --- Footer --- */
-        footer {
-            background: #2C263F;
-            color: #aaa;
-            padding: 40px 0;
-            font-size: 0.8rem;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .footer-logo img { height: 30px; margin-bottom: 5px; }
-        .footer-icons a { color: white; margin-left: 20px; font-size: 1.2rem; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .grid-container {
-                grid-template-columns: 1fr; /* Stack on mobile */
-            }
-            .ecosystem-card {
-                padding: 20px;
-            }
-            .nav-pill { display: none; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <a href="index.html" class="btn-back" style="margin: 20px;">
-        <i class="fas fa-arrow-left"></i> Back
-    </a>
 
-    <header>
+    <!-- App announcement bar -->
+    <div class="app-topbar" id="appTopbar">
+        <div class="app-topbar-inner">
+            <span class="app-topbar-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+            <p><strong>The H7 EdTech app is here.</strong> Live classes, e-books and progress tracking, right in your pocket.</p>
+            <div class="app-topbar-actions">
+                <a class="topbar-btn topbar-btn--primary" href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk"><i class="fa-brands fa-android"></i> Download App</a>
+                <a class="topbar-btn topbar-btn--ghost" href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Web App</a>
+            </div>
+            <button class="app-topbar-close" id="appTopbarClose" type="button" aria-label="Dismiss app banner"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <header class="site-header">
         <div class="container">
-            <div class="logo"><img src="static/logo.png" alt="H7 Logo"></div>
-            <h1 class="main-headline">
-                H7 is a hybrid platform. We combine online and technology-based methods to enhance the learning process
-            </h1>
+            <a class="site-logo" href="index.html"><img src="static/logo.png" alt="H7 EdTech"></a>
+
+            <nav class="nav-pill" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html" class="active">About</a>
+            <a href="tution.html">Tuitions</a>
+                <a href="index.html#get-the-app" class="nav-app"><i class="fa-solid fa-mobile-screen-button"></i> Get App</a>
+            </nav>
+
+            <div class="header-actions">
+                <a class="contact-us-link" href="index.html#contact">Contact Us</a>
+                <button class="nav-toggle" data-nav-toggle type="button" aria-expanded="false" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+
+        <div class="mobile-nav" data-nav-menu>
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html" class="active">About</a>
+            <a href="tution.html">Tuitions</a>
+            <a href="index.html#contact">Contact Us</a>
+            <a class="btn btn--deep" href="index.html#get-the-app"><i class="fa-solid fa-mobile-screen-button"></i> Get the App</a>
         </div>
     </header>
 
-    <section class="hero-section">
-        <div class="container hero-grid">
-            
-            <div class="col-left">
-                <div class="feature-box">
-                    We have a global reach, providing support for students both in India and other countries.
+    <main>
+        <section class="page-head">
+            <div class="container">
+                <a href="index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                <span class="tag-pill">About H7</span>
+                <h1>H7 is a hybrid platform. We combine online and technology-based methods to enhance the learning process</h1>
+            </div>
+        </section>
+
+        <section class="section--tight">
+            <div class="container about-grid">
+                <div class="about-col">
+                    <div class="about-box">We have a global reach, providing support for students both in India and other countries.</div>
+                    <div class="about-box">Designed for students from KG to Grade 12, offering both academic and skill-based education.</div>
                 </div>
-                <div class="feature-box">
-                    Designed for students from KG to Grade 12, offering both academic and skill-based education.
+
+                <div class="center-image-container">
+                    <div class="photo photo--4x3"><img src="static/pexels-photo-8618023 1.png" alt="Student learning"></div>
+                </div>
+
+                <div class="about-col">
+                    <div class="about-box">Interactive learning. Focus on creating a fun, interactive and engaging learning environment.</div>
+                    <div class="about-box">Core subjects such as English, Math, Science and creative skills like music, craft, and abacus.</div>
                 </div>
             </div>
+        </section>
 
-            <div class="center-image-container">
-                <img src="static/pexels-photo-8618023 1.png" alt="Student Learning" class="center-image">
-            </div>
+        <section class="section">
+            <div class="container">
+                <div class="text-card">
+                    <h2>H7 is a complete academic ecosystem</h2>
+                    <p>Your journey starts with H7. Join thousands of learners who've discovered smarter, simpler and more meaningful ways to learn. Whether you're aiming for better grades, deeper understanding, or lifelong learning habits, H7 makes it possible.</p>
 
-            <div class="col-right">
-                <div class="feature-box">
-                    Interactive learning. Focus on creating a fun, interactive and engaging learning environment.
+                    <h3>Why Choose H7?</h3>
+                    <ul class="why-choose">
+                        <li>Personalized mentorship with expert educators.</li>
+                        <li>Technology that adapts to you &mdash; not the other way around.</li>
+                        <li>Engaging classes that make learning exciting.</li>
+                    </ul>
+
+                    <p>Education is evolving &mdash; and H7 is leading the way. Start your personalized learning journey today and see how powerful education becomes when it's built around you.</p>
+
+                    <a class="btn btn--deep" href="index.html#contact">Book a demo</a>
                 </div>
-                <div class="feature-box">
-                    Core subjects such as English, Math, Science and creative skills like music, craft, and abacus.
-                </div>
             </div>
+        </section>
+    </main>
 
-        </div>
-    </section>
-
-    <section class="ecosystem-section">
+    <footer class="site-footer">
         <div class="container">
-            <div class="text-card">
-                <h2>H7 is a complete academic ecosystem</h2>
-                <p>
-                    Your journey starts with H7. Join thousands of learners who've discovered smarter, simpler and more meaningful ways to learn.<br>
-                    Whether you're aiming for better grades, deeper understanding, or lifelong learning habits, H7 makes it possible.
-                </p>
-                
-                <p style="margin-bottom:5px;">Why Choose H7?</p>
-                <ul class="why-choose">
-                    <li>Personalized mentorship with expert educators.</li>
-                    <li>Technology that adapts to you — not the other way around.</li>
-                    <li>Engaging classes that make learning exciting.</li>
-                </ul>
-
-                <p>
-                    Education is evolving — and H7 is leading the way. Start your personalized learning journey today and see how powerful education becomes when it's built around you.
-                </p>
-            </div>
-        </div>
-    </section>
-
-        <footer>
-        <div class="container footer-content">
-            <div class="footer-left">
-                <div class="footer-logo">
-                    <img src="static\logo.png" alt="H7">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><img src="static/logo.png" alt="H7 EdTech"></div>
+                    <strong>H7 EdTech</strong>
+                    <p><a href="mailto:academics@h7ed.com">academics@h7ed.com</a></p>
+                    <p><a href="tel:+919207773300">+91 92077 73300</a></p>
+                    <p>@h7_education_</p>
+                    <img class="footer-badge" src="static/IMG-20250828-WA0000 2.png" alt="">
                 </div>
-                <strong>H7 EdTech</strong><br>
-               academics@h7ed.com |Ph: +91 9207773300 | @h7_education_
-                <br><br>
-                <div style="display:flex; align-items:center; gap:5px;">
-                   <img src="static\IMG-20250828-WA0000 2.png" alt=""> 
+
+                <div class="footer-col">
+                    <h5>Explore</h5>
+                    <a href="index.html">Home</a>
+                    <a href="courses.html">Courses</a>
+                    <a href="about.html">About</a>
+                    <a href="learning.html">Learning Platform</a>
+                    <a href="online.html">Online Education</a>
+                    <a href="tution.html">Personal Tuitions</a>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Get the app</h5>
+                    <a href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk"><i class="fa-brands fa-android"></i> Download for Android</a>
+                    <a href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Open the web app</a>
+                    <a href="https://wa.me/message/5RN3H5SBER4TK1" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+
+                    <div class="footer-icons">
+                        <a href="#" aria-label="Google Play"><i class="fa-brands fa-google-play"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-icons">
-                <a href="#"><i class="fab fa-google-play"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 H7 EdTech. All rights reserved.</span>
+                <span>Shape the future.</span>
             </div>
         </div>
     </footer>
 
+    <!-- App modal -->
+    <div class="app-modal" id="appModal" role="dialog" aria-modal="true" aria-labelledby="appModalTitle">
+        <div class="app-modal-card">
+            <button class="app-modal-close" data-modal-close type="button" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="app-modal-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <h3 id="appModalTitle">Get the <span>H7 EdTech</span> app</h3>
+            <p>Live classes, e-books, progress tracking and 24&times;7 support &mdash; right in your pocket.</p>
+
+            <div class="app-modal-buttons">
+                <a class="app-btn app-btn--primary" href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk">
+                    <i class="fa-brands fa-android"></i>
+                    <span><small>Download for Android</small><strong>Get the APK</strong></span>
+                </a>
+                <a class="app-btn app-btn--ghost" href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-globe"></i>
+                    <span><small>No install needed</small><strong>Open Web App</strong></span>
+                </a>
+            </div>
+
+            <button class="app-modal-dismiss" data-modal-close type="button">Maybe later</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
 </body>
-</html
+</html>

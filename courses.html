@@ -3,286 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H7 EdTech - Academic Ecosystem</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Courses | H7 EdTech</title>
+    <meta name="description" content="School subjects, languages, coding and AI, abacus, vedic maths, public speaking and more — the subjects and skills taught at H7 EdTech.">
+    <link rel="icon" href="static/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* --- CSS Reset & Variables --- */
-        :root {
-            --primary-dark: #554B68;
-            --accent-purple: #BFAEE3;
-            --bg-body: #FBFCFE;
-            --text-dark: #333;
-            --card-border: #E0E0E0;
-            --pill-bg: #C6BBE3;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-dark);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        a { text-decoration: none; }
-        ul { list-style: none; }
-
-        /* --- Header --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            margin-bottom: 20px;
-        }
-
-        .logo img { height: 40px; }
-
-        .nav-pill {
-            background: #EAEAEA;
-            padding: 6px 30px;
-            border-radius: 30px;
-            display: flex;
-            gap: 20px;
-            margin: 0 auto;
-        }
-
-        .nav-pill a {
-            color: #666;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .nav-pill a.active { 
-            background-color: #554B68; 
-            color: white;
-            font-weight: 600;
-            padding: 2px 15px;
-            border-radius: 15px;
-        }
-
-        .nav-container {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* --- Main Content --- */
-        .main-title {
-            text-align: center;
-            color: #554B68;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-        }
-
-        /* The Big White Container Card */
-        .ecosystem-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            border: 1px solid #ddd;
-            padding: 40px;
-            max-width: 900px;
-            margin: 0 auto 60px;
-        }
-
-        /* The Purple/Cyan Header Strip */
-        .subjects-header {
-            border: 2px solid transparent;
-            border-radius: 6px;
-            background-image: linear-gradient(white, white), linear-gradient(to right, #D4CBE5, #64FCD9);
-            background-origin: border-box;
-            background-clip: content-box, border-box;
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #554B68;
-            margin-bottom: 30px;
-        }
-
-        /* Grid Layout */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        /* Individual Subject Cards */
-        .subject-box {
-            border: 1px solid #E0E0E0;
-            border-radius: 8px;
-            padding: 30px 15px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 140px;
-            background-color: white;
-            /* Subtle Pattern Overlay */
-            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 Q 50 50 100 0" stroke="rgba(0,0,0,0.03)" fill="none"/><path d="M0 100 Q 50 50 100 100" stroke="rgba(0,0,0,0.03)" fill="none"/></svg>');
-            background-size: 100% 100%;
-        }
-
-        .subject-box h4 {
-            color: #554B68;
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .subject-box p {
-            font-size: 0.75rem;
-            color: #777;
-            line-height: 1.4;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: #2C263F;
-            color: #aaa;
-            padding: 40px 0;
-            font-size: 0.8rem;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .footer-logo img { height: 30px; margin-bottom: 5px; }
-        .footer-icons a { color: white; margin-left: 20px; font-size: 1.2rem; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .grid-container {
-                grid-template-columns: 1fr; /* Stack on mobile */
-            }
-            .ecosystem-card {
-                padding: 20px;
-            }
-            .nav-pill { display: none; }
-        }
-        .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 24px;
-            border: 1px solid #ccc;
-            border-radius: 30px;
-            text-decoration: none;
-            color: #555;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-            background: white;
-            transition: all 0.2s;
-        }
-
-        .btn-back:hover {
-            background: #f0f0f0;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
 
-
-
-    <main class="container">
-        
-          <a href="index.html" class="btn-back" style="margin: 20px;">
-        <i class="fas fa-arrow-left"></i> Back
-    </a>
-        <h1 class="main-title">H7 is a complete academic ecosystem</h1>
-
-        <div class="ecosystem-card">
-            
-            <div class="subjects-header">
-                These are some of the subjects and skills taught
+    <!-- App announcement bar -->
+    <div class="app-topbar" id="appTopbar">
+        <div class="app-topbar-inner">
+            <span class="app-topbar-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+            <p><strong>The H7 EdTech app is here.</strong> Live classes, e-books and progress tracking, right in your pocket.</p>
+            <div class="app-topbar-actions">
+                <a class="topbar-btn topbar-btn--primary" href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk"><i class="fa-brands fa-android"></i> Download App</a>
+                <a class="topbar-btn topbar-btn--ghost" href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Web App</a>
             </div>
+            <button class="app-topbar-close" id="appTopbarClose" type="button" aria-label="Dismiss app banner"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
 
-            <div class="grid-container">
-                
-                <div class="subject-box">
-                    <h4>All School Subjects</h4>
-                    <p>All Classes</p>
-                </div>
-                <div class="subject-box">
-                    <h4>Language</h4>
-                    <p>English, Hindi, Malayalam, Arabic and French - As school subject and general language foundation</p>
-                </div>
-                <div class="subject-box">
-                    <h4>Coding & AI</h4>
-                    <p>For Grades I to X</p>
-                </div>
+    <header class="site-header">
+        <div class="container">
+            <a class="site-logo" href="index.html"><img src="static/logo.png" alt="H7 EdTech"></a>
 
-                <div class="subject-box">
-                    <h4>Art & Craft</h4>
-                    <p>For Grades KG to VII</p>
-                </div>
-                <div class="subject-box">
-                    <h4>Abacus</h4>
-                    <p>For Grades I to VII</p>
-                </div>
-                <div class="subject-box">
-                    <h4>Vedic Maths</h4>
-                    <p>For Grades V to X</p>
-                </div>
+            <nav class="nav-pill" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="courses.html" class="active">Courses</a>
+            <a href="about.html">About</a>
+            <a href="tution.html">Tuitions</a>
+                <a href="index.html#get-the-app" class="nav-app"><i class="fa-solid fa-mobile-screen-button"></i> Get App</a>
+            </nav>
 
-                <div class="subject-box">
-                    <h4>Public Speaking</h4>
-                    <p>For Grades KG to X</p>
-                </div>
-                <div class="subject-box">
-                    <h4>Aptitude Training</h4>
-                    <p>Starts from KG</p>
-                </div>
-                <div class="subject-box">
-                    <h4>Classical Music</h4>
-                    <p></p>
-                </div>
-
+            <div class="header-actions">
+                <a class="contact-us-link" href="index.html#contact">Contact Us</a>
+                <button class="nav-toggle" data-nav-toggle type="button" aria-expanded="false" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
             </div>
         </div>
 
-    </main>
+        <div class="mobile-nav" data-nav-menu>
+            <a href="index.html">Home</a>
+            <a href="courses.html" class="active">Courses</a>
+            <a href="about.html">About</a>
+            <a href="tution.html">Tuitions</a>
+            <a href="index.html#contact">Contact Us</a>
+            <a class="btn btn--deep" href="index.html#get-the-app"><i class="fa-solid fa-mobile-screen-button"></i> Get the App</a>
+        </div>
+    </header>
 
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-left">
-                <div class="footer-logo">
-                    <img src="static\logo.png" alt="H7">
-                </div>
-                <strong>H7 EdTech</strong><br>
-                academics@h7ed.com |Ph: +91 9207773300 | @h7_education_
-                <br><br>
-                <div style="display:flex; align-items:center; gap:5px;">
-                   <img src="static\IMG-20250828-WA0000 2.png" alt="">
+    <main>
+        <section class="page-head">
+            <div class="container">
+                <a href="index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                <span class="tag-pill">Courses</span>
+                <h1>H7 is a complete academic ecosystem</h1>
+                <p>Academic subjects and skill-based programmes, taught live by qualified educators from KG to Grade 12.</p>
+            </div>
+        </section>
+
+        <section class="section--tight">
+            <div class="container">
+                <div class="ecosystem-card">
+                    <div class="subjects-header">These are some of the subjects and skills taught</div>
+                    <div class="grid-container">
+                    <div class="subject-box">
+                        <h4>All School Subjects</h4>
+                        <p>All Classes</p>
+                    </div>
+                    <div class="subject-box">
+                        <h4>Language</h4>
+                        <p>English, Hindi, Malayalam, Arabic and French - As school subject and general language foundation</p>
+                    </div>
+                    <div class="subject-box">
+                        <h4>Coding &amp; AI</h4>
+                        <p>For Grades I to X</p>
+                    </div>
+                    <div class="subject-box">
+                        <h4>Art &amp; Craft</h4>
+                        <p>For Grades KG to VII</p>
+                    </div>
+                    <div class="subject-box">
+                        <h4>Abacus</h4>
+                        <p>For Grades I to VII</p>
+                    </div>
+                    <div class="subject-box">
+                        <h4>Vedic Maths</h4>
+                        <p>For Grades V to X</p>
+                    </div>
+                    <div class="subject-box">
+                        <h4>Public Speaking</h4>
+                        <p>For Grades KG to X</p>
+                    </div>
+                    <div class="subject-box">
+                        <h4>Aptitude Training</h4>
+                        <p>Starts from KG</p>
+                    </div>
+                    <div class="subject-box">
+                        <h4>Classical Music</h4>
+                        <p>All age groups</p>
+                    </div>
+                    </div>
                 </div>
             </div>
-            <div class="footer-icons">
-                <a href="#"><i class="fab fa-google-play"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><img src="static/logo.png" alt="H7 EdTech"></div>
+                    <strong>H7 EdTech</strong>
+                    <p><a href="mailto:academics@h7ed.com">academics@h7ed.com</a></p>
+                    <p><a href="tel:+919207773300">+91 92077 73300</a></p>
+                    <p>@h7_education_</p>
+                    <img class="footer-badge" src="static/IMG-20250828-WA0000 2.png" alt="">
+                </div>
+
+                <div class="footer-col">
+                    <h5>Explore</h5>
+                    <a href="index.html">Home</a>
+                    <a href="courses.html">Courses</a>
+                    <a href="about.html">About</a>
+                    <a href="learning.html">Learning Platform</a>
+                    <a href="online.html">Online Education</a>
+                    <a href="tution.html">Personal Tuitions</a>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Get the app</h5>
+                    <a href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk"><i class="fa-brands fa-android"></i> Download for Android</a>
+                    <a href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Open the web app</a>
+                    <a href="https://wa.me/message/5RN3H5SBER4TK1" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+
+                    <div class="footer-icons">
+                        <a href="#" aria-label="Google Play"><i class="fa-brands fa-google-play"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 H7 EdTech. All rights reserved.</span>
+                <span>Shape the future.</span>
             </div>
         </div>
     </footer>
 
+    <!-- App modal -->
+    <div class="app-modal" id="appModal" role="dialog" aria-modal="true" aria-labelledby="appModalTitle">
+        <div class="app-modal-card">
+            <button class="app-modal-close" data-modal-close type="button" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="app-modal-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <h3 id="appModalTitle">Get the <span>H7 EdTech</span> app</h3>
+            <p>Live classes, e-books, progress tracking and 24&times;7 support &mdash; right in your pocket.</p>
+
+            <div class="app-modal-buttons">
+                <a class="app-btn app-btn--primary" href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk">
+                    <i class="fa-brands fa-android"></i>
+                    <span><small>Download for Android</small><strong>Get the APK</strong></span>
+                </a>
+                <a class="app-btn app-btn--ghost" href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-globe"></i>
+                    <span><small>No install needed</small><strong>Open Web App</strong></span>
+                </a>
+            </div>
+
+            <button class="app-modal-dismiss" data-modal-close type="button">Maybe later</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

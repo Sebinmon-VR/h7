@@ -4,591 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H7 EdTech - Shape the Future</title>
+    <meta name="description" content="H7 EdTech is a hybrid learning platform for KG to Grade 12 — live 1:1 and group classes, e-books, progress tracking and 24x7 support, in India and worldwide.">
+    <link rel="icon" href="static/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="styles/styles.css">
-    <style>
-        /* --- CSS Reset & Variables --- */
-        :root {
-            /* Palette Update */
-            --primary-dark-purple: #322E4F; 
-            --primary-light-purple: #F5F2FB; 
-            --curve-band-color: #D6CDEA;
-            
-            /* New Colors for Exact Match */
-            --accent-green: #33fd9e; /* Bright Mint */
-            --text-purple-light: #bd68ee; /* Lighter purple for subtitles */
-            
-            --text-dark: #333;
-            --text-purple: #7A6C97;
-            --text-white: #fff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-        }
-
-        body {
-            background-color: var(--primary-light-purple);
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        a { text-decoration: none; }
-        ul { list-style: none; }
-
-        /* --- Header --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background: var(--primary-light-purple);
-        }
-
-        .logo img { height: 50px; }
-
-        .nav-pill {
-           
-            background: #77679b;
-            padding: 10px 30px;
-            border-radius: 30px;
-            display: flex;
-            gap: 30px;
-            margin: 0 auto;
-        }
-
-        .nav-pill a {
-            color: var(--text-white);
-            font-size: 0.9rem;
-            font-weight: 500;
-            background: #d2d2d200;
-            padding: 5px 10px;
-            border-radius: 30px;
-        }
-        .nav-pill a:hover { background: #ffffff36; }
-        
-        .nav-pill a.active { font-weight: 700; }
-        .contact-us-link { color: var(--text-purple); font-size: 0.9rem; font-weight: 600;}
-
-        .nav-container {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* --- Hero Section --- */
-        .hero-section {
-            background: var(--primary-light-purple);
-            padding: 60px 0 200px 0; 
-            position: relative;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 400px;
-            position: relative;
-            z-index: 5; 
-        }
-
-        .hero-text { flex: 1; padding-right: 50px; }
-
-        .hero-subtitle {
-            color: var(--text-purple-light);
-            font-weight: 700;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            letter-spacing: 0.5px;
-        }
-
-        .hero-title {
-            margin: 0;
-            margin-bottom: 20px;
-            line-height: 1;
-        }
-
-        /* Top line: Pastel gradient */
-        .hero-title .top-line {
-            display: block;
-            font-size: 5rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, #c4b6f0, #a8dfee);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-        }
-
-        /* Bottom line: Purple to Green/Cyan gradient */
-        .hero-title .bottom-line {
-            display: block;
-            font-size: 6.5rem;
-            font-weight: 400; /* Thinner weight for the big text */
-            background: linear-gradient(90deg, #cbaaf4 0%, #aee3f1 50%, #7ce0c7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-desc {
-            color: #8b8b9e;
-            margin-bottom: 30px;
-            max-width: 450px;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            font-weight: 500;
-        }
-
-        .hero-buttons { display: flex; gap: 20px; }
-
-        .btn-teal {
-            background-color: var(--accent-green);
-            color: #1a1a1a;
-            padding: 15px 35px;
-            border-radius: 12px;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(51, 253, 158, 0.4);
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .btn-teal:hover { transform: translateY(-2px); }
-
-        .btn-outline-gradient {
-            padding: 15px 35px;
-            border-radius: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            cursor: pointer;
-            background: white;
-            color: #555;
-            /* Trick for gradient border */
-            border: 2px solid transparent;
-            background-image: linear-gradient(white, white), 
-                              linear-gradient(90deg, #bd68ee, #7ce0c7);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-        .btn-outline-gradient:hover { transform: translateY(-2px); }
-
-
-        .hero-image {
-            flex: 1;
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .hero-image img {
-            position: relative;
-            z-index: 1;
-            width: 400px;
-        }
-
-        /* --- SVG Curve --- */
-        .svg-curve-divider {
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            z-index: 2;
-            overflow: hidden;
-        }
-
-        .svg-curve-divider svg {
-            display: block;
-            width: 100%;
-            height: auto;
-            min-height: 220px;
-        }
-
-        .curve-text {
-            font-size: 15px;
-            font-weight: 700;
-            fill: white; 
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-family: 'Outfit', sans-serif;
-        }
-
-        /* --- Global Reach Section --- */
-        .global-section {
-            background-color: var(--primary-dark-purple);
-            padding: 50px 0 100px; 
-            position: relative;
-            color: var(--text-white);
-            text-align: center;
-            margin-top: -1px; 
-        }
-
-        /* --- Map & Bubbles --- */
-        .world-map-container {
-            position: relative;
-            height: 600px;
-            max-width: 900px;
-            margin: 50px auto 100px; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .map-silhouette {
-            width: 60%;
-            opacity: 0.2;
-            filter: invert(1) sepia(1) saturate(0) lighten(1); 
-        }
-
-        .center-titles {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-        }
-
-        .center-titles h2 { font-size: 2.5rem; margin-bottom: 10px; font-weight: 700; }
-        .center-titles p { font-size: 1rem; opacity: 0.9; max-width: 300px; margin: 0 auto; }
-
-        .orbit-bubble {
-            position: absolute;
-            background: #423D63;
-            color: var(--text-white);
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: 0.85rem;
-            padding: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            border: 2px solid rgba(255,255,255,0.1);
-            font-weight: 600;
-        }
-
-        .bubble-1 { top: 5%; left: 20%; }
-        .bubble-2 { top: 5%; right: 20%; }
-        .bubble-3 { top: 35%; left: 5%; }
-        .bubble-4 { top: 35%; right: 5%; }
-        .bubble-5 { bottom: 20%; left: 20%; }
-        .bubble-6 { bottom: 20%; right: 20%; }
-        
-        .bubble-curriculum { 
-            top: 20%; left: 50%; 
-            transform: translate(-50%, -120%); 
-            width: 140px; height: 140px; 
-            background: #514A75; z-index:1; 
-        }
-
-        /* --- Dark Cards Section --- */
-        .dark-cards-section {
-            padding-bottom: 80px;
-        }
-        .dark-cards-row {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .dark-card {
-            background: #423D63;
-            border-radius: 20px;
-            width: 320px;
-            overflow: hidden;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border: none;
-        }
-
-        .dark-card img { width: 100%; height: 180px; object-fit: cover; }
-        .dark-card-body { padding: 25px; }
-        .dark-card h4 { color: var(--text-white); margin-bottom: 15px; font-size: 1.2rem; }
-        .dark-card p { color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; }
-
-        .btn-read-more {
-            background: rgba(255,255,255,0.2);
-            color: var(--text-white);
-            padding: 10px 25px;
-            border-radius: 25px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        /* --- Features Section --- */
-        .features-section {
-            background: var(--primary-light-purple);
-            padding: 100px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .feature-container { display: flex; align-items: center; gap: 50px; }
-        .circle-side-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 8px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 700px; }
-        
-        .feature-box {
-            border: none;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            background: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-        
-        .feature-box:hover { transform: translateY(-10px); }
-        .feature-icon { color: var(--accent-teal); font-size: 2rem; margin-bottom: 20px; }
-        .feature-box h4 { font-size: 1.1rem; margin-bottom: 15px; color: var(--text-purple); font-weight: 700; }
-        .feature-box p { font-size: 0.9rem; color: #999; line-height: 1.6; }
-
-        /* --- FAQ Section CSS --- */
-        .faq-section { 
-            background: var(--primary-dark-purple); 
-            padding: 80px 0; 
-            background-image: url('static/Pattern Bg.png');
-            text-align: center; 
-        }
-
-        .faq-section h2 { 
-            color: var(--text-white); 
-            font-size: 1.5rem; 
-            margin-bottom: 50px; 
-            letter-spacing: 2px; 
-            font-weight: 700; 
-        }
-
-        .faq-container { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 20px; 
-        }
-
-        .faq-item {
-            background: transparent;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 2px solid transparent; 
-        }
-
-        /* Active State Visuals */
-        .faq-item.active {
-            border: 2px dashed #6b628f;
-            padding: 10px;
-        }
-
-        .faq-question { 
-            background: white; 
-            padding: 20px 25px; 
-            border-radius: 8px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            font-size: 1rem; 
-            color: var(--text-dark); 
-            cursor: pointer; 
-            font-weight: 600; 
-            transition: background-color 0.3s;
-        }
-
-        .faq-question:hover {
-            background-color: #f9f9f9;
-        }
-
-        .faq-question i {
-            color: var(--text-purple);
-            transition: transform 0.3s ease;
-        }
-
-        /* Rotate arrow when active */
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background: white;
-            border-radius: 0 0 8px 8px; 
-        }
-        
-        .faq-item.active .faq-answer {
-             border-top: 1px solid #eee;
-        }
-        
-        .faq-item.active .faq-question {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-        
-        .faq-item.active .faq-answer {
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-        }
-
-        .faq-answer p {
-            padding: 20px 25px;
-            color: #666;
-            text-align: left;
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        /* --- Booking Form --- */
-        .booking-section {
-            padding: 100px 0;
-            background-color: white;
-        }
-
-        .booking-card {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            border: 1px solid #eee;
-        }
-
-        .booking-header { display: flex; align-items: center; gap: 15px; margin-bottom: 40px; color: var(--text-purple); font-weight: 800; text-transform: uppercase; font-size: 1.5rem; }
-        .form-grid { display: grid; gap: 20px; }
-        .form-input { width: 100%; padding: 15px 20px; border: 1px solid #eee; background: #F9F9F9; border-radius: 10px; font-size: 1rem; color: #555; outline: none; transition: border-color 0.3s; }
-        .form-input:focus { border-color: var(--text-purple); }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .btn-submit { background: var(--primary-dark-purple); color: white; padding: 15px; border: none; border-radius: 10px; cursor: pointer; font-weight: 700; margin-top: 20px; width: 100%; font-size: 1.1rem; }
-
-        /* --- Footer --- */
-        footer { background: var(--primary-dark-purple); color: rgba(255,255,255,0.7); padding: 60px 0; font-size: 0.9rem; }
-        .footer-flex { display: flex; justify-content: space-between; align-items: center; } /* Added utility class */
-        .footer-logo img { height: 40px; margin-bottom: 15px; }
-        .footer-icons a { color: var(--text-white); margin-left: 20px; font-size: 1.5rem; transition: color 0.3s; }
-        .footer-icons a:hover { color: var(--accent-green); }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            header { padding: 15px; flex-direction: column; gap: 20px; }
-            .nav-pill { display: none; }
-            .hero-section { padding-bottom: 150px; } 
-            .hero-content { flex-direction: column; text-align: center; }
-            .hero-text { padding-right: 0; margin-bottom: 50px; }
-            
-            /* Adjust title sizes for mobile */
-            .hero-title .top-line { font-size: 3rem; }
-            .hero-title .bottom-line { font-size: 4rem; }
-            
-            .hero-buttons { justify-content: center; }
-            .hero-image img { width: 280px; }
-            .curve-text { font-size: 24px; letter-spacing: 1px; }
-            .world-map-container { height: auto; flex-direction: column; margin-top: 50px; gap: 20px;}
-            .orbit-bubble { position: relative; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important; transform: none !important; margin: 0 auto; }
-            .map-silhouette { display: none; }
-            .center-titles { position: relative; top: auto; left: auto; transform: none; margin-bottom: 40px; }
-            .feature-container { flex-direction: column; gap: 30px; }
-            .circle-side-img { display: none; }
-            .feature-grid { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-            .footer-flex { flex-direction: column; gap: 30px; text-align: center; } /* Updated */
-            .footer-icons a { margin: 0 10px; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <img src="static/logo.png" alt="H7 Logo"> 
+    <!-- App announcement bar -->
+    <div class="app-topbar" id="appTopbar">
+        <div class="app-topbar-inner">
+            <span class="app-topbar-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+            <p><strong>The H7 EdTech app is here.</strong> Live classes, e-books and progress tracking, right in your pocket.</p>
+            <div class="app-topbar-actions">
+                <a class="topbar-btn topbar-btn--primary" href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk"><i class="fa-brands fa-android"></i> Download App</a>
+                <a class="topbar-btn topbar-btn--ghost" href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Web App</a>
+            </div>
+            <button class="app-topbar-close" id="appTopbarClose" type="button" aria-label="Dismiss app banner"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <div class="nav-container">
-            <div class="nav-pill">
-                <a href="#" class="active">Home</a>
+    </div>
+
+    <header class="site-header">
+        <div class="container">
+            <a class="site-logo" href="index.html"><img src="static/logo.png" alt="H7 EdTech"></a>
+
+            <nav class="nav-pill" aria-label="Main navigation">
+                <a href="index.html" class="active">Home</a>
                 <a href="courses.html">Courses</a>
                 <a href="about.html">About</a>
-               
                 <a href="tution.html">Tuitions</a>
-           
+                <a href="#get-the-app" class="nav-app"><i class="fa-solid fa-mobile-screen-button"></i> Get App</a>
+            </nav>
+
+            <div class="header-actions">
+                <a class="contact-us-link" href="#contact">Contact Us</a>
+                <button class="nav-toggle" data-nav-toggle type="button" aria-expanded="false" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
             </div>
         </div>
-        <div class="contact-us-link">
-            <a href="https://hamdaz.nexterp.in/nlp/nlp/admission-login" target="_blank" rel="noopener noreferrer">Contact Us</a>
+
+        <div class="mobile-nav" data-nav-menu>
+            <a href="index.html" class="active">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About</a>
+            <a href="tution.html">Tuitions</a>
+            <a href="#contact">Contact Us</a>
+            <a class="btn btn--mint" href="#get-the-app"><i class="fa-solid fa-mobile-screen-button"></i> Get the App</a>
         </div>
     </header>
 
     <main>
+        <!-- Hero -->
         <section class="hero-section">
             <div class="container hero-content">
                 <div class="hero-text">
-                    <p class="hero-subtitle">Learn with H7 EdTech</p>
+                    <span class="eyebrow">Learn with H7 EdTech</span>
                     <h1 class="hero-title">
-                        <span class="top-line">SHAPE THE</span> 
+                        <span class="top-line">SHAPE THE</span>
                         <span class="bottom-line">FUTURE</span>
                     </h1>
                     <p class="hero-desc">Your journey starts with H7. We offer limitless education for worldwide students. Join thousands of learners who've discovered smarter, simpler and more meaningful ways to learn.</p>
-                    
+
                     <div class="hero-buttons">
-                        <button class="btn-teal"><a href="https://wa.me/message/5RN3H5SBER4TK1" style="text-decoration: none; color: white;">Chat On Whatsapp</a></button>
-                        <button class="btn-outline-gradient"><a href="https://hamdaz.nexterp.in/nlp/nlp/admission-login" target="_blank" rel="noopener noreferrer">Book A Demo</a></button>
+                        <a class="btn btn--mint" href="https://wa.me/message/5RN3H5SBER4TK1" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Chat On Whatsapp</a>
+                        <a class="btn btn--outline" href="https://hamdaz.nexterp.in/nlp/nlp/admission-login" target="_blank" rel="noopener noreferrer">Book A Demo</a>
                     </div>
                 </div>
+
                 <div class="hero-image">
-                    <img src="static\IMAGE (6).png" alt="Student with Folder">
+                    <img src="static/IMAGE (6).png" alt="Student with folder">
                 </div>
             </div>
 
-            <div class="svg-curve-divider" >
+            <!-- curved brand band -->
+            <div class="svg-curve-divider" aria-hidden="true">
                 <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-                    <defs >
+                    <defs>
                         <path id="curveArch" d="M-250,320 Q720,60 1690,320" />
                     </defs>
-
-                    <path  d="M-250,320 Q720,60 1690,320 L1690,400 L-250,400 Z" fill="#322E4F"></path>
-
+                    <path d="M-250,320 Q720,60 1690,320 L1690,400 L-250,400 Z" fill="#322E4F"></path>
                     <use href="#curveArch" fill="none" stroke="#D6CDEA" stroke-width="100" stroke-linecap="butt" />
-
                     <text class="curve-text">
                         <textPath href="#curveArch" startOffset="50%" text-anchor="middle" dy="-10">
-                            SCHOOL SUBJECTS &nbsp;&nbsp;&nbsp; LANGUAGES &nbsp;&nbsp;&nbsp; CODING & AI &nbsp;&nbsp;&nbsp; ART & CRAFT &nbsp;&nbsp;&nbsp; ABACUS &nbsp;&nbsp;&nbsp; VEDIC MATHS &nbsp;&nbsp;&nbsp; PUBLIC SPEAKING &nbsp;&nbsp;&nbsp; APTITUDE TRAINING 
+                            SCHOOL SUBJECTS &nbsp;&nbsp;&nbsp; LANGUAGES &nbsp;&nbsp;&nbsp; CODING &amp; AI &nbsp;&nbsp;&nbsp; ART &amp; CRAFT &nbsp;&nbsp;&nbsp; ABACUS &nbsp;&nbsp;&nbsp; VEDIC MATHS &nbsp;&nbsp;&nbsp; PUBLIC SPEAKING &nbsp;&nbsp;&nbsp; APTITUDE TRAINING
                         </textPath>
                     </text>
                 </svg>
             </div>
         </section>
 
-        <section class="global-section" >
-            <div class="container" styles="background-image: url('static/Pattern Bg.png');">
-                <div class="world-map-container" >
+        <!-- Global reach -->
+        <section class="global-section">
+            <div class="container">
+                <div class="world-map-container">
                     <div class="center-titles">
                         <h2>Global Reach</h2>
                         <p>Supporting students both in India and other countries</p>
                     </div>
-                    
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" class="map-silhouette" alt="World Map">
 
-                    <div class="orbit-bubble bubble-1">Live Classes<br>1:1 & Group</div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" class="map-silhouette" alt="" aria-hidden="true">
+
                     <div class="orbit-bubble bubble-curriculum">Curriculum<br>CBSE/ICSE/IGCSE<br>/ Victorian etc</div>
+                    <div class="orbit-bubble bubble-1">Live Classes<br>1:1 &amp; Group</div>
                     <div class="orbit-bubble bubble-2">E-Books For<br>Online Education</div>
                     <div class="orbit-bubble bubble-3">Co-Curricular<br>Activities</div>
                     <div class="orbit-bubble bubble-4">24X7 Student<br>Support System</div>
@@ -596,75 +115,124 @@
                     <div class="orbit-bubble bubble-6">Progress<br>Tracking</div>
                 </div>
 
-                <div class="dark-cards-section"styles="background-image: url('static/Pattern Bg.png');">
-                    <div class="dark-cards-row">
-                        <div class="dark-card">
-                            <img src="static\unsplash_LLfRMRT-9AY (1).png" alt="Learning Platform">
-                            <div class="dark-card-body">
-                                <h4>Learning Platform</h4>
-                                <p>AI is shaping how the world works. H7 EdTech supports students and tracks educational progress efficiently.</p>
-                                <a href="learning.html" class="btn-read-more">Read More</a>
-                            </div>
+                <div class="dark-cards-row">
+                    <article class="dark-card">
+                        <div class="photo photo--16x10"><img src="static/unsplash_LLfRMRT-9AY (1).png" alt="Learning platform"></div>
+                        <div class="dark-card-body">
+                            <h4>Learning Platform</h4>
+                            <p>AI is shaping how the world works. H7 EdTech supports students and tracks educational progress efficiently.</p>
+                            <a href="learning.html" class="btn-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
-                        <div class="dark-card">
-                             <img src="static\unsplash_yR9jnl7UJ_Y.png" alt="Online Education">
-                            <div class="dark-card-body">
-                                <h4>Online Education</h4>
-                                <p>Integrated quality network of online education workbook through efficient lessons and interactive tools.</p>
-                                <a href="online.html" class="btn-read-more">Read More</a>
-                            </div>
+                    </article>
+
+                    <article class="dark-card">
+                        <div class="photo photo--16x10"><img src="static/unsplash_yR9jnl7UJ_Y.png" alt="Online education"></div>
+                        <div class="dark-card-body">
+                            <h4>Online Education</h4>
+                            <p>Integrated quality network of online education workbook through efficient lessons and interactive tools.</p>
+                            <a href="online.html" class="btn-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
-                        <div class="dark-card">
-                             <img src="static\unsplash_aFiUz4BG3ug.png" alt="Personal Tuitions">
-                            <div class="dark-card-body">
-                                <h4>Personal Tuitions</h4>
-                                <p>Whether personalized in mastering new skills or support, connecting people through effective platforms.</p>
-                                <a href="tution.html" class="btn-read-more">Read More</a>
-                            </div>
+                    </article>
+
+                    <article class="dark-card">
+                        <div class="photo photo--16x10"><img src="static/unsplash_aFiUz4BG3ug.png" alt="Personal tuitions"></div>
+                        <div class="dark-card-body">
+                            <h4>Personal Tuitions</h4>
+                            <p>Whether personalized in mastering new skills or support, connecting people through effective platforms.</p>
+                            <a href="tution.html" class="btn-read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
+        <!-- Features -->
         <section class="features-section">
-            <div class="container feature-container">
-                 <img src="static\unsplash_Y45PpacE8UA.png" class="circle-side-img" alt="Student">
-                <div class="feature-grid">
-                    <div class="feature-box">
-                        <div class="feature-icon"><img src="static\Frame.png"></div> 
-                        <h4>One on One Sessions</h4>
-                        <p>Personalized attention from qualified teachers tailored to your learning style.</p>
-                    </div>
-                    <div class="feature-box">
-                        <div class="feature-icon"><img src="static\Frame (1).png"></div>
-                        <h4>E-Learning Content</h4>
-                        <p>Creating engaging and interactive digital learning materials.</p>
-                    </div>
-                    <div class="feature-box">
-                        <div class="feature-icon"><img src="static\Frame (2).png"></div>
-                        <h4>LMS Integration</h4>
-                        <p>Facilitating online course delivery and management.</p>
-                    </div>
-                    <div class="feature-box">
-                        <div class="feature-icon"><img src="static\Frame (3).png"></div>
-                        <h4>Virtual Classroom</h4>
-                        <p>Providing technology for interactive and remote learning.</p>
-                    </div>
+            <div class="container">
+                <div class="section-head section-head--center">
+                    <span class="eyebrow">Why H7</span>
+                    <h2>Everything a learner needs, in one place</h2>
                 </div>
-                 <img src="static\ChatGPT Image Sep 9, 2025, 01_30_00 PM 1 (1).png" class="circle-side-img" alt="Tutor">
+
+                <div class="feature-container">
+                    <div class="photo photo--square photo--round circle-side-img"><img src="static/unsplash_Y45PpacE8UA.png" alt="Student learning online"></div>
+
+                    <div class="feature-grid">
+                        <div class="feature-box">
+                            <div class="feature-icon"><img src="static/Frame.png" alt=""></div>
+                            <h4>One on One Sessions</h4>
+                            <p>Personalized attention from qualified teachers tailored to your learning style.</p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><img src="static/Frame (1).png" alt=""></div>
+                            <h4>E-Learning Content</h4>
+                            <p>Creating engaging and interactive digital learning materials.</p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><img src="static/Frame (2).png" alt=""></div>
+                            <h4>LMS Integration</h4>
+                            <p>Facilitating online course delivery and management.</p>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-icon"><img src="static/Frame (3).png" alt=""></div>
+                            <h4>Virtual Classroom</h4>
+                            <p>Providing technology for interactive and remote learning.</p>
+                        </div>
+                    </div>
+
+                    <div class="photo photo--square photo--round circle-side-img"><img src="static/ChatGPT Image Sep 9, 2025, 01_30_00 PM 1 (1).png" alt="Tutor teaching online"></div>
+                </div>
             </div>
         </section>
 
+        <!-- Get the app -->
+        <section class="app-section" id="get-the-app">
+            <div class="container">
+                <div class="app-card">
+                    <div class="app-card-text">
+                        <span class="app-badge"><i class="fa-solid fa-mobile-screen-button"></i> H7 Mobile App</span>
+                        <h2>Learn anywhere,<br><span>on any device</span></h2>
+                        <p class="app-lead">Live classes, e-books, progress tracking and 24&times;7 student support &mdash; all in your pocket. Install the Android app, or open the web app straight in your browser.</p>
+
+                        <div class="app-buttons">
+                            <a class="app-btn app-btn--primary" href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk">
+                                <i class="fa-brands fa-android"></i>
+                                <span><small>Download for Android</small><strong>Get the APK</strong></span>
+                            </a>
+                            <a class="app-btn app-btn--ghost" href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-solid fa-globe"></i>
+                                <span><small>No install needed</small><strong>Open Web App</strong></span>
+                            </a>
+                        </div>
+
+                        <p class="app-hint"><i class="fa-solid fa-circle-info"></i> APK is about 74&nbsp;MB. Allow &ldquo;install from unknown sources&rdquo; when your phone asks.</p>
+                    </div>
+
+                    <div class="app-card-visual">
+                        <div class="phone">
+                            <img src="static/logo.png" class="phone-logo" alt="">
+                            <div class="phone-name">H7 EdTech</div>
+                            <div class="phone-tag">Shape the future</div>
+                            <div class="phone-tile"><i class="fa-solid fa-video"></i> Live Classes</div>
+                            <div class="phone-tile"><i class="fa-solid fa-book-open"></i> E-Books &amp; Notes</div>
+                            <div class="phone-tile"><i class="fa-solid fa-chart-line"></i> Progress Tracking</div>
+                            <div class="phone-tile"><i class="fa-solid fa-headset"></i> 24&times;7 Support</div>
+                            <div class="phone-cta">Start Learning</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
         <section class="faq-section">
             <div class="container">
                 <h2>FREQUENTLY ASKED QUESTIONS</h2>
                 <div class="faq-container">
-                    
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>What type of platform is H7?</span>
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
                             <p>H7 is a hybrid education platform. We combine online and technology-based methods to enhance the learning process.</p>
@@ -674,7 +242,7 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Who is H7 for?</span>
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
                             <p>This platform is designed for students from KG to Grade 12, offering both academic and skill-based education.</p>
@@ -684,7 +252,7 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>What can you learn through H7 EdTech?</span>
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
                             <p>Core subjects such as English, Math, Science and Malayalam. Also creative skills like music, craft, and abacus.</p>
@@ -694,105 +262,109 @@
                     <div class="faq-item">
                         <div class="faq-question">
                             <span>Does the platform include parent support?</span>
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
                             <p>Parents can track their child's academic performance through report generation, monitor assignments, and get alerts.</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
- <section class="booking-section" id="contact" from="contact">
-    <div class="booking-card">
-        <div class="booking-header">
-            <i class="fas fa-info-circle"></i> BOOK A DEMO
-        </div>
+        <!-- Book a demo -->
+        <section class="booking-section" id="contact">
+            <div class="container">
+                <div class="booking-card">
+                    <div class="booking-header">
+                        <i class="fa-solid fa-circle-info"></i> Book A Demo
+                    </div>
 
-        <!-- NEW CONTENT START -->
-        <p style="font-size:1.05rem; color:#666; margin-bottom:25px; line-height:1.7;">
-            Discover how <strong>H7 EdTech</strong> transforms learning through
-            personalized sessions, smart tracking, and a powerful digital classroom.
-            Book a free demo to see how our platform fits your child’s learning needs.
-        </p>
+                    <p class="lead">Discover how <strong>H7 EdTech</strong> transforms learning through personalized sessions, smart tracking, and a powerful digital classroom. Book a free demo to see how our platform fits your child's learning needs.</p>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:35px;">
-            <div style="background:#F9F9FF; padding:15px; border-radius:12px;">
-                ✔ Live platform walkthrough
-            </div>
-            <div style="background:#F9F9FF; padding:15px; border-radius:12px;">
-                ✔ Curriculum explanation (CBSE / ICSE / IGCSE)
-            </div>
-            <div style="background:#F9F9FF; padding:15px; border-radius:12px;">
-                ✔ One-to-one learning model
-            </div>
-            <div style="background:#F9F9FF; padding:15px; border-radius:12px;">
-                ✔ Parent & student dashboard demo
-            </div>
-        </div>
-        <!-- NEW CONTENT END -->
+                    <div class="booking-perks">
+                        <div class="booking-perk"><i class="fa-solid fa-check"></i> Live platform walkthrough</div>
+                        <div class="booking-perk"><i class="fa-solid fa-check"></i> Curriculum explanation (CBSE / ICSE / IGCSE)</div>
+                        <div class="booking-perk"><i class="fa-solid fa-check"></i> One-to-one learning model</div>
+                        <div class="booking-perk"><i class="fa-solid fa-check"></i> Parent &amp; student dashboard demo</div>
+                    </div>
 
-        <div class="hero-buttons" style="justify-content:center;">
-                        <button class="btn-teal"><a href="https://wa.me/message/5RN3H5SBER4TK1" style="text-decoration: none; color: white;">Chat On Whatsapp</a></button>
-            <button class="btn-outline-gradient">
-                <a href="https://hamdaz.nexterp.in/nlp/nlp/admission-login">Book A Demo</a>
-            </button>
-        </div>
-    </div>
-</section>
-
+                    <div class="booking-actions">
+                        <a class="btn btn--mint" href="https://wa.me/message/5RN3H5SBER4TK1" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Chat On Whatsapp</a>
+                        <a class="btn btn--outline" href="https://hamdaz.nexterp.in/nlp/nlp/admission-login" target="_blank" rel="noopener noreferrer">Book A Demo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer style="background-image: url('static/Pattern Bg.png');">
-        <div class="container footer-flex">
-            <div class="footer-left">
-                <div class="footer-logo">
-                    <img src="static\logo.png" alt="H7">
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><img src="static/logo.png" alt="H7 EdTech"></div>
+                    <strong>H7 EdTech</strong>
+                    <p><a href="mailto:academics@h7ed.com">academics@h7ed.com</a></p>
+                    <p><a href="tel:+919207773300">+91 92077 73300</a></p>
+                    <p>@h7_education_</p>
+                    <img class="footer-badge" src="static/IMG-20250828-WA0000 2.png" alt="">
                 </div>
-                <strong>H7 EdTech</strong><br>
-                academics@h7ed.com |Ph: +91 9207773300 | @h7_education_
-                <br><br>
-                <div style="display:flex; align-items:center; gap:5px;">
-                   <img src="static\IMG-20250828-WA0000 2.png" alt=""> 
+
+                <div class="footer-col">
+                    <h5>Explore</h5>
+                    <a href="index.html">Home</a>
+                    <a href="courses.html">Courses</a>
+                    <a href="about.html">About</a>
+                    <a href="learning.html">Learning Platform</a>
+                    <a href="online.html">Online Education</a>
+                    <a href="tution.html">Personal Tuitions</a>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Get the app</h5>
+                    <a href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk"><i class="fa-brands fa-android"></i> Download for Android</a>
+                    <a href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Open the web app</a>
+                    <a href="https://wa.me/message/5RN3H5SBER4TK1" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+
+                    <div class="footer-icons">
+                        <a href="#" aria-label="Google Play"><i class="fa-brands fa-google-play"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-icons">
-                <a href="#"><i class="fab fa-google-play"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 H7 EdTech. All rights reserved.</span>
+                <span>Shape the future.</span>
             </div>
         </div>
     </footer>
 
-    <script>
-        const faqItems = document.querySelectorAll('.faq-item');
+    <!-- App modal -->
+    <div class="app-modal" id="appModal" role="dialog" aria-modal="true" aria-labelledby="appModalTitle">
+        <div class="app-modal-card">
+            <button class="app-modal-close" data-modal-close type="button" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="app-modal-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <h3 id="appModalTitle">Get the H7 EdTech app</h3>
+            <p>Live classes, e-books, progress tracking and 24&times;7 support &mdash; right in your pocket.</p>
 
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            const answer = item.querySelector('.faq-answer');
+            <div class="app-modal-buttons">
+                <a class="app-btn app-btn--primary" href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk">
+                    <i class="fa-brands fa-android"></i>
+                    <span><small>Download for Android</small><strong>Get the APK</strong></span>
+                </a>
+                <a class="app-btn app-btn--ghost" href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-globe"></i>
+                    <span><small>No install needed</small><strong>Open Web App</strong></span>
+                </a>
+            </div>
 
-            question.addEventListener('click', () => {
-                // Close other open items (optional - remove this block if you want multiple open at once)
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
-                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
-                    }
-                });
+            <button class="app-modal-dismiss" data-modal-close type="button">Maybe later</button>
+        </div>
+    </div>
 
-                // Toggle current item
-                item.classList.toggle('active');
-
-                if (item.classList.contains('active')) {
-                    answer.style.maxHeight = answer.scrollHeight + "px";
-                } else {
-                    answer.style.maxHeight = null;
-                }
-            });
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions | H7 EdTech</title>
+    <meta name="description" content="Apply for admission to H7 EdTech. Tell us about the student, the class they are applying for and how to reach you, and our admissions team will be in touch.">
+    <link rel="icon" href="static/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+    <!-- App announcement bar -->
+    <div class="app-topbar" id="appTopbar">
+        <div class="app-topbar-inner">
+            <span class="app-topbar-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+            <p><strong>The H7 EdTech app is here.</strong> Live classes, e-books and progress tracking, right in your pocket.</p>
+            <div class="app-topbar-actions">
+                <a class="topbar-btn topbar-btn--primary" href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk"><i class="fa-brands fa-android"></i> Download App</a>
+                <a class="topbar-btn topbar-btn--ghost" href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Web App</a>
+            </div>
+            <button class="app-topbar-close" id="appTopbarClose" type="button" aria-label="Dismiss app banner"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <header class="site-header">
+        <div class="container">
+            <a class="site-logo" href="index.html"><img src="static/logo.png" alt="H7 EdTech"></a>
+
+            <nav class="nav-pill" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="about.html">About</a>
+                <a href="tution.html">Tuitions</a>
+                <a href="admission.html" class="active">Admissions</a>
+                <a href="index.html#get-the-app" class="nav-app"><i class="fa-solid fa-mobile-screen-button"></i> Get App</a>
+            </nav>
+
+            <div class="header-actions">
+                <a class="contact-us-link" href="index.html#contact">Contact Us</a>
+                <button class="nav-toggle" data-nav-toggle type="button" aria-expanded="false" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+
+        <div class="mobile-nav" data-nav-menu>
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About</a>
+            <a href="tution.html">Tuitions</a>
+            <a href="admission.html" class="active">Admissions</a>
+            <a href="index.html#contact">Contact Us</a>
+            <a class="btn btn--deep" href="index.html#get-the-app"><i class="fa-solid fa-mobile-screen-button"></i> Get the App</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-head">
+            <div class="container">
+                <a href="index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                <span class="tag-pill">Admissions</span>
+                <h1>Apply for admission</h1>
+                <p>Tell us about the student, the class they are applying for and how to reach you. It takes about five minutes, and our admissions team will get back to you with the next steps.</p>
+            </div>
+        </section>
+
+        <section class="section--tight">
+            <div class="container admission-layout">
+
+                <!-- ------------------------------------------------ the form -->
+                <div>
+                    <div class="admission-card" id="formCard">
+                        <!--
+                            data-api is the LMS backend the form talks to. Change it here if the
+                            API moves; nothing else on this page knows the address.
+                        -->
+                        <form id="admissionForm"
+                              data-api="https://h7-lms-bknd-hhaqd9cdcfe7f9gh.indiasouthcentral-01.azurewebsites.net"
+                              data-program="LMS"
+                              novalidate>
+
+                            <div id="formStatus" class="is-hidden" role="status" aria-live="polite"></div>
+
+                            <!-- Student -->
+                            <section class="form-section">
+                                <div class="form-section-head">
+                                    <h2><i class="fa-solid fa-child-reaching"></i> Student details</h2>
+                                    <p>Who is applying.</p>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="student_full_name">Full name <span class="req" aria-hidden="true">*</span></label>
+                                            <input class="form-input" id="student_full_name" name="student_full_name" data-field="student_full_name" type="text" autocomplete="off" placeholder="As on the birth certificate" required>
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="date_of_birth">Date of birth <span class="req" aria-hidden="true">*</span></label>
+                                            <input class="form-input" id="date_of_birth" name="date_of_birth" data-field="date_of_birth" type="date" required>
+                                            <span class="field-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-row--3">
+                                        <div class="form-field">
+                                            <label for="gender">Gender</label>
+                                            <select class="form-input" id="gender" name="gender" data-field="gender">
+                                                <option value="">Prefer not to say</option>
+                                                <option value="FEMALE">Female</option>
+                                                <option value="MALE">Male</option>
+                                                <option value="OTHER">Other</option>
+                                            </select>
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="blood_group">Blood group</label>
+                                            <select class="form-input" id="blood_group" name="blood_group" data-field="blood_group">
+                                                <option value="">Not sure</option>
+                                                <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                                                <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+                                            </select>
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="nationality">Nationality</label>
+                                            <input class="form-input" id="nationality" name="nationality" data-field="nationality" type="text" placeholder="Indian">
+                                            <span class="field-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="previous_school">Previous school</label>
+                                            <input class="form-input" id="previous_school" name="previous_school" data-field="previous_school" type="text" placeholder="Leave blank for a first admission">
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="previous_class">Class completed there</label>
+                                            <input class="form-input" id="previous_class" name="previous_class" data-field="previous_class" type="text" placeholder="e.g. Class 4">
+                                            <span class="field-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Admission -->
+                            <section class="form-section">
+                                <div class="form-section-head">
+                                    <h2><i class="fa-solid fa-graduation-cap"></i> Admission details</h2>
+                                    <p>What the student is applying for.</p>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-row">
+                                        <div class="form-field" id="classSelectField">
+                                            <label for="class_id">Class applying for <span class="req" aria-hidden="true">*</span></label>
+                                            <select class="form-input" id="class_id" name="class_id" data-field="class_id" required>
+                                                <option value="">Loading classes…</option>
+                                            </select>
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field is-hidden" id="classTextField">
+                                            <label for="class_applied">Class applying for <span class="req" aria-hidden="true">*</span></label>
+                                            <input class="form-input" id="class_applied" name="class_applied" data-field="class_applied" type="text" placeholder="e.g. Class 5">
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field is-hidden" id="yearField">
+                                            <label for="academic_year_id">Academic session</label>
+                                            <select class="form-input" id="academic_year_id" name="academic_year_id" data-field="academic_year_id"></select>
+                                            <input class="form-input is-hidden" id="academic_year_name" type="text" readonly tabindex="-1">
+                                            <span class="hint">The session the student would join.</span>
+                                            <span class="field-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="syllabus">Preferred syllabus / board</label>
+                                            <input class="form-input" id="syllabus" name="syllabus" data-field="syllabus" type="text" list="syllabusOptions" placeholder="CBSE, ICSE, IGCSE…">
+                                            <datalist id="syllabusOptions">
+                                                <option value="CBSE"></option>
+                                                <option value="ICSE"></option>
+                                                <option value="IGCSE"></option>
+                                                <option value="State Board"></option>
+                                                <option value="Victorian"></option>
+                                            </datalist>
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="medium">Medium of instruction</label>
+                                            <input class="form-input" id="medium" name="medium" data-field="medium" type="text" placeholder="English">
+                                            <span class="field-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Parent / guardian -->
+                            <section class="form-section">
+                                <div class="form-section-head">
+                                    <h2><i class="fa-solid fa-people-roof"></i> Parent or guardian</h2>
+                                    <p>The person we should contact about this application.</p>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="parent1_relation">Relationship to the student <span class="req" aria-hidden="true">*</span></label>
+                                            <select class="form-input" id="parent1_relation" name="parent1_relation" data-field="parents.0.relation">
+                                                <option value="FATHER">Father</option>
+                                                <option value="MOTHER">Mother</option>
+                                                <option value="GUARDIAN">Guardian</option>
+                                                <option value="OTHER">Other</option>
+                                            </select>
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="parent1_name">Full name <span class="req" aria-hidden="true">*</span></label>
+                                            <input class="form-input" id="parent1_name" name="parent1_name" data-field="parents.0.full_name" type="text" autocomplete="name" required>
+                                            <span class="field-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-row--3">
+                                        <div class="form-field">
+                                            <label for="parent1_phone">Mobile number <span class="req" aria-hidden="true">*</span></label>
+                                            <input class="form-input" id="parent1_phone" name="parent1_phone" data-field="parents.0.phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+91 98765 43210" required>
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="parent1_email">Email <span class="req" aria-hidden="true">*</span></label>
+                                            <input class="form-input" id="parent1_email" name="parent1_email" data-field="parents.0.email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required>
+                                            <span class="hint">We will send the acknowledgement here.</span>
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="parent1_occupation">Occupation</label>
+                                            <input class="form-input" id="parent1_occupation" name="parent1_occupation" data-field="parents.0.occupation" type="text">
+                                            <span class="field-error"></span>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="link-btn" id="addSecondParent"><i class="fa-solid fa-plus"></i> Add another parent or guardian</button>
+
+                                    <div id="secondParent" class="form-grid is-hidden">
+                                        <div class="form-row">
+                                            <div class="form-field">
+                                                <label for="parent2_relation">Relationship to the student</label>
+                                                <select class="form-input" id="parent2_relation" name="parent2_relation" data-field="parents.1.relation">
+                                                    <option value="MOTHER">Mother</option>
+                                                    <option value="FATHER">Father</option>
+                                                    <option value="GUARDIAN">Guardian</option>
+                                                    <option value="OTHER">Other</option>
+                                                </select>
+                                                <span class="field-error"></span>
+                                            </div>
+                                            <div class="form-field">
+                                                <label for="parent2_name">Full name</label>
+                                                <input class="form-input" id="parent2_name" name="parent2_name" data-field="parents.1.full_name" type="text">
+                                                <span class="field-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-row form-row--3">
+                                            <div class="form-field">
+                                                <label for="parent2_phone">Mobile number</label>
+                                                <input class="form-input" id="parent2_phone" name="parent2_phone" data-field="parents.1.phone" type="tel" inputmode="tel">
+                                                <span class="field-error"></span>
+                                            </div>
+                                            <div class="form-field">
+                                                <label for="parent2_email">Email</label>
+                                                <input class="form-input" id="parent2_email" name="parent2_email" data-field="parents.1.email" type="email" inputmode="email">
+                                                <span class="field-error"></span>
+                                            </div>
+                                            <div class="form-field">
+                                                <label for="parent2_occupation">Occupation</label>
+                                                <input class="form-input" id="parent2_occupation" name="parent2_occupation" data-field="parents.1.occupation" type="text">
+                                                <span class="field-error"></span>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="link-btn" id="removeSecondParent"><i class="fa-solid fa-minus"></i> Remove second parent</button>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Address -->
+                            <section class="form-section">
+                                <div class="form-section-head">
+                                    <h2><i class="fa-solid fa-location-dot"></i> Home address</h2>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="address_line1">Address line 1</label>
+                                            <input class="form-input" id="address_line1" name="address_line1" data-field="address_line1" type="text" autocomplete="address-line1">
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="address_line2">Address line 2</label>
+                                            <input class="form-input" id="address_line2" name="address_line2" data-field="address_line2" type="text" autocomplete="address-line2">
+                                            <span class="field-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row form-row--3">
+                                        <div class="form-field">
+                                            <label for="city">City / town</label>
+                                            <input class="form-input" id="city" name="city" data-field="city" type="text" autocomplete="address-level2">
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="state">State</label>
+                                            <input class="form-input" id="state" name="state" data-field="state" type="text" autocomplete="address-level1">
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="postal_code">PIN / postal code</label>
+                                            <input class="form-input" id="postal_code" name="postal_code" data-field="postal_code" type="text" inputmode="numeric" autocomplete="postal-code">
+                                            <span class="field-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="country">Country</label>
+                                            <input class="form-input" id="country" name="country" data-field="country" type="text" autocomplete="country-name" placeholder="India">
+                                            <span class="field-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Other details -->
+                            <section class="form-section">
+                                <div class="form-section-head">
+                                    <h2><i class="fa-solid fa-circle-info"></i> Other details</h2>
+                                    <p>Anything that helps us look after the student well.</p>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-row">
+                                        <div class="form-field">
+                                            <label for="sibling_name">Brother or sister already studying with us</label>
+                                            <input class="form-input" id="sibling_name" name="sibling_name" data-field="sibling_name" type="text" placeholder="Their name, if any">
+                                            <span class="field-error"></span>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="how_heard">How did you hear about H7?</label>
+                                            <select class="form-input" id="how_heard" name="how_heard" data-field="how_heard">
+                                                <option value="">Choose one</option>
+                                                <option>Website or search</option>
+                                                <option>Friend or family</option>
+                                                <option>Social media</option>
+                                                <option>Advertisement</option>
+                                                <option>School visit or event</option>
+                                                <option>Other</option>
+                                            </select>
+                                            <span class="field-error"></span>
+                                        </div>
+                                    </div>
+                                    <label class="check-field">
+                                        <input type="checkbox" id="transport_required" name="transport_required" data-field="transport_required">
+                                        <span>The student will need school transport.</span>
+                                    </label>
+                                    <div class="form-field">
+                                        <label for="medical_notes">Medical conditions, allergies or learning support needs</label>
+                                        <textarea class="form-input" id="medical_notes" name="medical_notes" data-field="medical_notes" rows="3" placeholder="Leave blank if none"></textarea>
+                                        <span class="field-error"></span>
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="message">Anything else you would like us to know</label>
+                                        <textarea class="form-input" id="message" name="message" data-field="message" rows="3"></textarea>
+                                        <span class="field-error"></span>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Declaration -->
+                            <section class="form-section">
+                                <div class="form-section-head">
+                                    <h2><i class="fa-solid fa-file-signature"></i> Declaration</h2>
+                                </div>
+                                <label class="check-field" id="consentField">
+                                    <input type="checkbox" id="consent" name="consent" data-field="consent" required>
+                                    <span>I confirm that the details given here are accurate, and I understand that H7 EdTech will use them to process this application and contact me about it. <span class="req" aria-hidden="true">*</span></span>
+                                </label>
+                                <span class="field-error" id="consentError"></span>
+                            </section>
+
+                            <!-- Left blank by people; filled in by bots. -->
+                            <div class="hp-field" aria-hidden="true">
+                                <label for="website">Website</label>
+                                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <div id="formError" class="form-alert form-alert--error is-hidden" role="alert"></div>
+
+                            <div class="form-actions">
+                                <p class="form-note">Fields marked <span class="req">*</span> are required. Submitting does not commit you to a place.</p>
+                                <button type="submit" class="btn btn--mint" id="submitBtn"><i class="fa-solid fa-paper-plane"></i> Send application</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Shown in place of the form after a successful submission -->
+                    <div class="admission-card success-card is-hidden" id="formSuccess" tabindex="-1">
+                        <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+                        <h2>Application received</h2>
+                        <p id="successMessage">Thank you. Our admissions team will review the application and get back to you.</p>
+                        <div class="reference-pill" id="successReference">ADR-0000-0000</div>
+                        <p>Please keep this reference. Quote it if you call or write to the office about the application.</p>
+                        <div style="margin-top: 26px;">
+                            <a class="btn btn--deep" href="index.html">Back to home</a>
+                            <button type="button" class="btn btn--outline" id="submitAnother">Apply for another student</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ----------------------------------------------- the aside -->
+                <aside class="admission-aside">
+                    <div class="aside-card">
+                        <h3>What happens next</h3>
+                        <ol class="steps">
+                            <li>You receive an email with a reference number as soon as the form is sent.</li>
+                            <li>Our admissions team reviews the application and calls you to talk through the class, fees and any documents needed.</li>
+                            <li>Once admission is confirmed, you receive login details for the H7 app so the student can start learning.</li>
+                        </ol>
+                    </div>
+                    <div class="aside-card aside-contact">
+                        <h3>Need a hand?</h3>
+                        <a href="https://wa.me/message/5RN3H5SBER4TK1" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+                        <a href="tel:+919207773300"><i class="fa-solid fa-phone"></i> +91 92077 73300</a>
+                        <a href="mailto:academics@h7ed.com"><i class="fa-solid fa-envelope"></i> academics@h7ed.com</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><img src="static/logo.png" alt="H7 EdTech"></div>
+                    <strong>H7 EdTech</strong>
+                    <p><a href="mailto:academics@h7ed.com">academics@h7ed.com</a></p>
+                    <p><a href="tel:+919207773300">+91 92077 73300</a></p>
+                    <p>@h7_education_</p>
+                    <img class="footer-badge" src="static/IMG-20250828-WA0000 2.png" alt="">
+                </div>
+
+                <div class="footer-col">
+                    <h5>Explore</h5>
+                    <a href="index.html">Home</a>
+                    <a href="courses.html">Courses</a>
+                    <a href="about.html">About</a>
+                    <a href="admission.html">Admissions</a>
+                    <a href="learning.html">Learning Platform</a>
+                    <a href="online.html">Online Education</a>
+                    <a href="tution.html">Personal Tuitions</a>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Get the app</h5>
+                    <a href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk"><i class="fa-brands fa-android"></i> Download for Android</a>
+                    <a href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Open the web app</a>
+                    <a href="https://wa.me/message/5RN3H5SBER4TK1" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+
+                    <div class="footer-icons">
+                        <a href="#" aria-label="Google Play"><i class="fa-brands fa-google-play"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 H7 EdTech. All rights reserved.</span>
+                <span>Shape the future.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- No app pop-up on this page: nobody filling in a form wants to be interrupted. -->
+    <script src="js/main.js"></script>
+    <script src="js/admission.js"></script>
+</body>
+</html>

@@ -1007,6 +1007,138 @@ body.is-locked { overflow: hidden; }
 .subject-box p { color: rgba(255, 255, 255, 0.65); font-size: 0.88rem; }
 
 /* ==========================================================================
+   Admission form (admission.html)
+   ========================================================================== */
+.admission-layout { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 30px; align-items: start; }
+
+.admission-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    padding: clamp(22px, 4vw, 44px);
+    box-shadow: var(--shadow-md);
+}
+
+.admission-aside { display: grid; gap: 18px; position: sticky; top: 96px; }
+.aside-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; box-shadow: var(--shadow-sm); }
+.aside-card h3 { font-size: 1rem; margin-bottom: 14px; }
+
+.steps { display: grid; gap: 14px; counter-reset: step; }
+.steps li { display: flex; gap: 12px; font-size: 0.92rem; line-height: 1.55; }
+.steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(189, 104, 238, 0.12);
+    color: #8B3FC4;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aside-contact a { display: flex; align-items: center; gap: 10px; padding: 8px 0; color: var(--ink); font-weight: 600; font-size: 0.92rem; transition: color 0.2s; }
+.aside-contact a:hover { color: var(--violet); }
+.aside-contact i { color: var(--violet); width: 18px; text-align: center; }
+
+.form-section { padding: 26px 0; border-top: 1px solid var(--line); }
+.form-section:first-of-type { border-top: none; padding-top: 0; }
+.form-section-head { margin-bottom: 18px; }
+.form-section-head h2 { font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+.form-section-head h2 i { color: var(--violet); font-size: 0.95rem; }
+.form-section-head p { font-size: 0.88rem; margin-top: 4px; }
+
+.form-row--3 { grid-template-columns: repeat(3, 1fr); }
+
+.form-field { display: grid; gap: 6px; align-content: start; }
+.form-field label { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+.req { color: #d64d6b; margin-left: 2px; }
+.form-field .hint { font-size: 0.78rem; color: var(--muted); }
+.field-error { display: none; font-size: 0.78rem; font-weight: 600; color: #c0334f; }
+.form-field.is-invalid .form-input { border-color: #e06a83; background: #fff6f8; }
+.form-field.is-invalid .field-error { display: block; }
+
+select.form-input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%239a97ab' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 44px;
+}
+textarea.form-input { min-height: 96px; resize: vertical; line-height: 1.5; }
+.form-input::placeholder { color: var(--muted); }
+.form-input:disabled, .form-input[readonly] { background: var(--lilac); color: var(--body); cursor: default; }
+
+.check-field {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    background: var(--surface-2);
+    font-size: 0.92rem;
+    color: var(--ink);
+    cursor: pointer;
+}
+.check-field input { width: 18px; height: 18px; margin-top: 3px; accent-color: #8B3FC4; flex-shrink: 0; }
+.check-field.is-invalid { border-color: #e06a83; background: #fff6f8; }
+
+.link-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #8B3FC4;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    justify-self: start;
+}
+.link-btn:hover { text-decoration: underline; }
+
+.form-alert { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: var(--r-md); font-size: 0.92rem; margin-bottom: 22px; line-height: 1.55; }
+.form-alert i { margin-top: 3px; flex-shrink: 0; }
+.form-alert a { text-decoration: underline; font-weight: 600; }
+.form-alert--info { background: rgba(189, 104, 238, 0.08); color: #5b2e82; border: 1px solid rgba(189, 104, 238, 0.25); }
+.form-alert--warn { background: #fff8e8; color: #7a5200; border: 1px solid #f5dfa3; }
+.form-alert--error { background: #fff3f5; color: #a8233f; border: 1px solid #f3c2cd; }
+#formError { margin: 22px 0 0; }
+
+.form-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 26px; margin-top: 26px; border-top: 1px solid var(--line); }
+.form-actions .btn[disabled] { opacity: 0.6; cursor: not-allowed; transform: none; }
+.form-note { font-size: 0.82rem; color: var(--muted); max-width: 360px; }
+
+/* the honeypot: off screen for people, present for bots */
+.hp-field { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+.is-hidden { display: none !important; }
+
+.success-card { text-align: center; padding: clamp(30px, 5vw, 56px); }
+.success-icon { width: 78px; height: 78px; margin: 0 auto 20px; border-radius: 50%; background: rgba(51, 253, 158, 0.18); color: #12A468; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+.success-card h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 10px; }
+.success-card p { max-width: 520px; margin: 0 auto; }
+.reference-pill {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 12px 26px;
+    border-radius: var(--r-md);
+    background: var(--lilac);
+    border: 1px dashed var(--band);
+    color: var(--ink);
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+.success-card .btn { margin: 6px; }
+
+/* ==========================================================================
    Responsive
    ========================================================================== */
 @media (max-width: 991px) {
@@ -1022,6 +1154,8 @@ body.is-locked { overflow: hidden; }
     .learn-more-label { align-self: flex-start; display: flex; align-items: center; gap: 18px; }
     .arrow-icon { margin-top: 0; }
     .about-grid { grid-template-columns: 1fr; }
+    .admission-layout { grid-template-columns: 1fr; }
+    .admission-aside { position: static; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .app-card { flex-direction: column; align-items: stretch; text-align: center; gap: 38px; }
     .app-card-text { width: 100%; }
@@ -1047,7 +1181,9 @@ body.is-locked { overflow: hidden; }
     .topbar-btn { flex: 1; justify-content: center; }
     .curve-text { font-size: 24px; letter-spacing: 1px; }
     .feature-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
+    .form-row, .form-row--3 { grid-template-columns: 1fr; }
+    .form-actions { flex-direction: column; align-items: stretch; }
+    .form-actions .btn { width: 100%; }
     .booking-actions { flex-direction: column; }
     .booking-actions .btn { width: 100%; }
     .app-btn { width: 100%; max-width: 320px; justify-content: center; }

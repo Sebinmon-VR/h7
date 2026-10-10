@@ -858,7 +858,7 @@
         if (!dial && !emailOk) {
             // The school has not filled in its contact details; use the office's.
             phone = '+91 92077 73300'; dial = '+919207773300';
-            email = 'academics@h7ed.com'; emailOk = true;
+            email = 'support@hamdaz.com'; emailOk = true;
         }
         return h('aside', { class: 'aside-card aside-contact status-help', 'aria-labelledby': 'helpHeading' }, [
             h('h3', { id: 'helpHeading', text: 'Questions about this application?' }),

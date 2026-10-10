@@ -20,6 +20,7 @@
         success: document.getElementById('formSuccess'),
         successMessage: document.getElementById('successMessage'),
         successReference: document.getElementById('successReference'),
+        successTrack: document.getElementById('successTrack'),
         submitAnother: document.getElementById('submitAnother'),
         submit: document.getElementById('submitBtn'),
         classSelectField: document.getElementById('classSelectField'),
@@ -333,6 +334,10 @@
         el.successReference.textContent = data.reference || '';
         el.successMessage.textContent = data.detail ||
             'Thank you. Our admissions team will review the application and get back to you.';
+        // The acknowledgement email carries the family's private tracking link.
+        if (el.successTrack) {
+            if (data.acknowledgement_sent) show(el.successTrack); else hide(el.successTrack);
+        }
         hide(el.card);
         show(el.success);
         el.success.scrollIntoView({ behavior: 'smooth', block: 'start' });

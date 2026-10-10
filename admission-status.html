@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Status | H7 EdTech</title>
+    <meta name="description" content="Follow your admission application to H7 EdTech, upload the documents we ask for and send the admission fee details.">
+    <!-- A private page reached from the admissions emails: the link itself opens the application. -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer">
+    <link rel="icon" href="static/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+    <!-- App announcement bar -->
+    <div class="app-topbar" id="appTopbar">
+        <div class="app-topbar-inner">
+            <span class="app-topbar-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+            <p><strong>The H7 EdTech app is here.</strong> Live classes, e-books and progress tracking, right in your pocket.</p>
+            <div class="app-topbar-actions">
+                <a class="topbar-btn topbar-btn--primary" href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk"><i class="fa-brands fa-android"></i> Download App</a>
+                <a class="topbar-btn topbar-btn--ghost" href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Web App</a>
+            </div>
+            <button class="app-topbar-close" id="appTopbarClose" type="button" aria-label="Dismiss app banner"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <header class="site-header">
+        <div class="container">
+            <a class="site-logo" href="index.html"><img src="static/logo.png" alt="H7 EdTech"></a>
+
+            <nav class="nav-pill" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="about.html">About</a>
+                <a href="tution.html">Tuitions</a>
+                <a href="admission.html" class="active">Admissions</a>
+                <a href="index.html#get-the-app" class="nav-app"><i class="fa-solid fa-mobile-screen-button"></i> Get App</a>
+            </nav>
+
+            <div class="header-actions">
+                <a class="contact-us-link" href="index.html#contact">Contact Us</a>
+                <button class="nav-toggle" data-nav-toggle type="button" aria-expanded="false" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+
+        <div class="mobile-nav" data-nav-menu>
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">About</a>
+            <a href="tution.html">Tuitions</a>
+            <a href="admission.html" class="active">Admissions</a>
+            <a href="index.html#contact">Contact Us</a>
+            <a class="btn btn--deep" href="index.html#get-the-app"><i class="fa-solid fa-mobile-screen-button"></i> Get the App</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-head">
+            <div class="container">
+                <a href="index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                <span class="tag-pill">Admissions</span>
+                <h1>Your application</h1>
+                <p>Follow the application from here, upload the documents we ask for and send the admission fee details. Keep the link from your email: it opens this page for your application only.</p>
+            </div>
+        </section>
+
+        <section class="section--tight">
+            <!--
+                data-api is the LMS backend this page talks to, exactly as on admission.html.
+                Change it here if the API moves; nothing else on this page knows the address.
+            -->
+            <div class="container status-layout" id="statusApp"
+                 data-api="https://h7-lms-bknd-hhaqd9cdcfe7f9gh.indiasouthcentral-01.azurewebsites.net">
+
+                <!-- Loading -->
+                <div class="admission-card status-loading" id="statusLoading" role="status" aria-live="polite">
+                    <i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i>
+                    <span>Opening your application…</span>
+                </div>
+
+                <!-- The link is missing, mistyped or no longer valid -->
+                <div class="admission-card success-card is-hidden" id="statusInvalid" tabindex="-1">
+                    <div class="success-icon status-icon--muted"><i class="fa-solid fa-link-slash" aria-hidden="true"></i></div>
+                    <h2>We could not open this application</h2>
+                    <p id="invalidMessage">This link is not valid. Please use the most recent email from the admissions office, or contact the school office for help.</p>
+                    <div class="status-contact-row">
+                        <a href="tel:+919207773300"><i class="fa-solid fa-phone" aria-hidden="true"></i> +91 92077 73300</a>
+                        <a href="mailto:academics@h7ed.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i> academics@h7ed.com</a>
+                        <a href="https://wa.me/message/5RN3H5SBER4TK1" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+                    </div>
+                    <p class="status-small">Have not applied yet? You can apply online in about five minutes.</p>
+                    <div style="margin-top: 18px;">
+                        <a class="btn btn--mint" href="admission.html"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Apply for admission</a>
+                    </div>
+                </div>
+
+                <!-- The server could not be reached -->
+                <div class="admission-card success-card is-hidden" id="statusOffline" tabindex="-1">
+                    <div class="success-icon status-icon--muted"><i class="fa-solid fa-wifi" aria-hidden="true"></i></div>
+                    <h2>We could not load your application just now</h2>
+                    <p id="offlineMessage">Please check your internet connection and try again. If this keeps happening, contact the school office.</p>
+                    <div style="margin-top: 22px;">
+                        <button type="button" class="btn btn--deep" id="retryLoad"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Try again</button>
+                    </div>
+                </div>
+
+                <!-- The application itself; filled in by js/admission-status.js -->
+                <div class="status-view is-hidden" id="statusView"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo"><img src="static/logo.png" alt="H7 EdTech"></div>
+                    <strong>H7 EdTech</strong>
+                    <p><a href="mailto:academics@h7ed.com">academics@h7ed.com</a></p>
+                    <p><a href="tel:+919207773300">+91 92077 73300</a></p>
+                    <p>@h7_education_</p>
+                    <img class="footer-badge" src="static/IMG-20250828-WA0000 2.png" alt="">
+                </div>
+
+                <div class="footer-col">
+                    <h5>Explore</h5>
+                    <a href="index.html">Home</a>
+                    <a href="courses.html">Courses</a>
+                    <a href="about.html">About</a>
+                    <a href="admission.html">Admissions</a>
+                    <a href="learning.html">Learning Platform</a>
+                    <a href="online.html">Online Education</a>
+                    <a href="tution.html">Personal Tuitions</a>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Get the app</h5>
+                    <a href="app/application-a6d4d497-79b5-4bd1-9456-f5d5516d18d7.apk" download="H7-EdTech.apk"><i class="fa-brands fa-android"></i> Download for Android</a>
+                    <a href="https://thankful-hill-090549110.7.azurestaticapps.net/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> Open the web app</a>
+                    <a href="https://wa.me/message/5RN3H5SBER4TK1" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+
+                    <div class="footer-icons">
+                        <a href="#" aria-label="Google Play"><i class="fa-brands fa-google-play"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 H7 EdTech. All rights reserved.</span>
+                <span>Shape the future.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- No app pop-up on this page: a family uploading documents does not want to be interrupted. -->
+    <script src="js/main.js"></script>
+    <script src="js/admission-status.js"></script>
+</body>
+</html>

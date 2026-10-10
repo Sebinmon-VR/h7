@@ -152,16 +152,9 @@
                                 </div>
                                 <div class="form-grid">
                                     <div class="form-row">
-                                        <div class="form-field" id="classSelectField">
-                                            <label for="class_id">Class applying for <span class="req" aria-hidden="true">*</span></label>
-                                            <select class="form-input" id="class_id" name="class_id" data-field="class_id" required>
-                                                <option value="">Loading classes…</option>
-                                            </select>
-                                            <span class="field-error"></span>
-                                        </div>
-                                        <div class="form-field is-hidden" id="classTextField">
+                                        <div class="form-field" id="classTextField">
                                             <label for="class_applied">Class applying for <span class="req" aria-hidden="true">*</span></label>
-                                            <input class="form-input" id="class_applied" name="class_applied" data-field="class_applied" type="text" placeholder="e.g. Class 5">
+                                            <input class="form-input" id="class_applied" name="class_applied" data-field="class_applied" type="text" maxlength="100" required placeholder="e.g. Class 5, Grade 7, LKG">
                                             <span class="field-error"></span>
                                         </div>
                                         <div class="form-field is-hidden" id="yearField">
@@ -350,15 +343,6 @@
                                             </select>
                                             <span class="field-error"></span>
                                         </div>
-                                    </div>
-                                    <label class="check-field">
-                                        <input type="checkbox" id="transport_required" name="transport_required" data-field="transport_required">
-                                        <span>The student will need school transport.</span>
-                                    </label>
-                                    <div class="form-field">
-                                        <label for="medical_notes">Medical conditions, allergies or learning support needs</label>
-                                        <textarea class="form-input" id="medical_notes" name="medical_notes" data-field="medical_notes" rows="3" placeholder="Leave blank if none"></textarea>
-                                        <span class="field-error"></span>
                                     </div>
                                     <div class="form-field">
                                         <label for="message">Anything else you would like us to know</label>

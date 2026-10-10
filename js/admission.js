@@ -23,10 +23,6 @@
         successTrack: document.getElementById('successTrack'),
         submitAnother: document.getElementById('submitAnother'),
         submit: document.getElementById('submitBtn'),
-        classSelectField: document.getElementById('classSelectField'),
-        classSelect: document.getElementById('class_id'),
-        classTextField: document.getElementById('classTextField'),
-        classText: document.getElementById('class_applied'),
         yearField: document.getElementById('yearField'),
         yearSelect: document.getElementById('academic_year_id'),
         yearText: document.getElementById('academic_year_name'),
@@ -40,7 +36,6 @@
     };
 
     var accepting = true;
-    var classesLoaded = false;
     var submitLabel = el.submit.innerHTML;
 
     /* --- small helpers ------------------------------------------------------ */
@@ -112,27 +107,9 @@
     }
 
     /* --- what the form offers ----------------------------------------------- */
-    function useTypedClass() {
-        hide(el.classSelectField);
-        show(el.classTextField);
-        el.classSelect.removeAttribute('required');
-        el.classText.setAttribute('required', 'required');
-        classesLoaded = false;
-    }
-
-    function fillClasses(classes) {
-        if (!classes || !classes.length) { useTypedClass(); return; }
-        el.classSelect.innerHTML = '<option value="">Choose a class</option>';
-        classes.forEach(function (room) {
-            var option = document.createElement('option');
-            option.value = String(room.id);
-            option.textContent = room.name || room.code || ('Class ' + room.id);
-            el.classSelect.appendChild(option);
-        });
-        show(el.classSelectField);
-        hide(el.classTextField);
-        classesLoaded = true;
-    }
+    /* The class is typed, not picked: the family writes the class they want ("Grade 7",
+       "LKG"), and the office maps it to a real class when admitting. A list read from the
+       LMS showed internal and test classes to the public. */
 
     function fillYears(data) {
         var years = data.academic_years || [];
@@ -169,7 +146,6 @@
                 return res.json();
             })
             .then(function (data) {
-                fillClasses(data.classes);
                 fillYears(data);
                 if (data.accepting === false) {
                     accepting = false;
@@ -182,11 +158,10 @@
                 }
             })
             .catch(function () {
-                // The form still works without the class list; the office reads the class
-                // the family typed.
-                useTypedClass();
+                // The form still works without the options; the application simply lands in
+                // the default session.
                 hide(el.yearField);
-                setStatus('warn', '<i class="fa-solid fa-circle-info"></i><span>We could not load the class list just now. Type the class below and send the application as usual.</span>');
+                setStatus(null);
             });
     }
 
@@ -222,8 +197,7 @@
         need('date_of_birth', !!dob, 'Enter the date of birth.');
         if (dob) need('date_of_birth', dob < today, 'The date of birth must be in the past.');
 
-        if (classesLoaded) need('class_id', !!text('class_id'), 'Choose the class the student is applying for.');
-        else need('class_applied', !!text('class_applied'), 'Tell us which class the student is applying for.');
+        need('class_applied', !!text('class_applied'), 'Tell us which class the student is applying for.');
 
         need('parents.0.full_name', !!text('parent1_name'), 'Enter the parent or guardian’s name.');
         need('parents.0.phone', digits(text('parent1_phone')).length >= 7, 'Enter a mobile number we can call.');
@@ -283,8 +257,8 @@
             nationality: orNull(text('nationality')),
             previous_school: orNull(text('previous_school')),
             previous_class: orNull(text('previous_class')),
-            class_id: classesLoaded && text('class_id') ? Number(text('class_id')) : null,
-            class_applied: classesLoaded ? null : orNull(text('class_applied')),
+            class_id: null,
+            class_applied: orNull(text('class_applied')),
             academic_year_id: yearId ? Number(yearId) : null,
             syllabus: orNull(text('syllabus')),
             medium: orNull(text('medium')),
@@ -296,8 +270,6 @@
             postal_code: orNull(text('postal_code')),
             country: orNull(text('country')),
             sibling_name: orNull(text('sibling_name')),
-            transport_required: !!form.elements.transport_required.checked,
-            medical_notes: orNull(text('medical_notes')),
             message: orNull(text('message')),
             how_heard: orNull(text('how_heard')),
             consent: !!el.consent.checked,
@@ -370,7 +342,7 @@
                 }
             })
             .catch(function () {
-                setError('We could not reach the admissions server. Check your connection and try again, or contact the office.');
+                setError('We could not connect. Check your internet connection and try again, or contact the school office.');
             })
             .then(function () { setBusy(false); });
     });
